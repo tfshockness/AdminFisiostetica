@@ -1,0 +1,19 @@
+/** GLOBAL CONF **/
+
+.search-box{
+    margin-top:20px;
+}
+
+.create-box{
+    margin-top:40px;
+}
+
+.content-header{
+    margin-bottom: 15px;
+}
+
+.home-btn{
+    margin:0 auto;
+    width:90%;
+    padding-top: 30px;
+}
