@@ -9,61 +9,66 @@ $subtitle = "Page";
 <link rel="stylesheet" href="{{ URL::asset('plugins/fullcalendar/fullcalendar.print.css')}}" media="print">
 @endsection
 @section ('content')
+
+
+
 <!-- Small boxes (Stat box) -->
       <div class="row home-btn">
         
-        <div class="col-lg-3 col-xs-5">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>44</h3>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="info-box bg-yellow">
+            <span class="info-box-icon"><i class="ion ion-person-add"></i></span>
 
-              <p>Registrar Cliente</p>
+            <div class="info-box-content">
+              <span class="info-box-text">Novo Cliente</span>
+              <span class="info-box-number">41,410</span>
+
+                  <span class="progress-description">
+                    70% Increase in 30 Days
+                  </span>
             </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">
-              Registrar <i class="fa fa-arrow-circle-right"></i>
-            </a>
+            <!-- /.info-box-content -->
           </div>
+          <!-- /.info-box -->
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="info-box bg-red">
+            <span class="info-box-icon"><i class="ion ion-clock"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Novo Agendamento</span>
+              <span class="info-box-number">41,410</span>
+
+                  <span class="progress-description">
+                    70% Increase in 30 Days
+                  </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="info-box bg-aqua">
+            <span class="info-box-icon"><i class="fa fa-shopping-cart"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Efetuar Pagamento</span>
+              <span class="info-box-number">41,410</span>
+                  <span class="progress-description">
+                    70% Increase in 30 Days
+                  </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-5">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>65</h3>
 
-              <p>Criar Agendamento</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-clock"></i>
-            </div>
-            <a href="#" class="small-box-footer">
-              Agendar <i class="fa fa-arrow-circle-right"></i>
-            </a>
-          </div>
-        </div>
-        <!-- ./col -->
 
-    <div class="col-lg-3 col-xs-5">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>150</h3>
 
-              <p>Efetuar Pagamento</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-shopping-cart"></i>
-            </div>
-            <a href="#" class="small-box-footer">
-              Pagamento <i class="fa fa-arrow-circle-right"></i>
-            </a>
-          </div>
-        </div>
-        <!-- ./col -->
       </div>
       <!-- /.row -->
 <!-- Small boxes (END box) -->
