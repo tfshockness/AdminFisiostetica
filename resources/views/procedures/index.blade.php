@@ -7,6 +7,10 @@ $subtitle = "Lista de Procedimentos";
 
 @section('content')
 <div id="procedures">
+    <div class="form-group" style="width: 95%; margin: 0 auto;">
+        @include('layouts.error')
+    </div>
+
     <div class="col-md-12">
         <div class="box">
         
@@ -42,11 +46,11 @@ $subtitle = "Lista de Procedimentos";
                             <th>Nome</th>
                             <th>Opções</th>
                         </tr>
-                    @foreach ($procedimentos as $procedimento)
+                    @foreach ($procedures as $procedure)
                         <tr>
-                            <td>{{$procedimento->name}}</td>
+                            <td>{{$procedure->name}}</td>
                             <td>
-                                <a class="btn bg-olive" href="">
+                                <a class="btn bg-olive" href="/procedimentos/{{$procedure->id}}/edit">
                                     <i class="fa fa-edit"></i> Editar
                                 </a>
                             </td>
@@ -54,7 +58,10 @@ $subtitle = "Lista de Procedimentos";
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </div> {{-- end box-body --}}
+            <div class="box-footer pagination" align="center" style="width:100%">
+            {{ $procedures->links() }}
+        </div>
         </div>
     </div>
 </div>
@@ -65,41 +72,25 @@ $subtitle = "Lista de Procedimentos";
         <div class="box box-primary">
             <div class="box-header">
                 <h3 class="box-title center">Adicionar Procedimento</h3><span class="close" @click="close">x</span>
-                <form role="form" class="form-horizontal">
+                <form role="form" class="form-horizontal" action="/procedimentos" method="POST">
+                    {{ csrf_field() }}
                         <div class="form-group" style="padding-top:20px;">
                             <label for="first_name" class="col-sm-2 control-label">Nome</label>
+
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="first_name" placeholder="Nome" value="">
+                                <input type="text" class="form-control" id="name" placeholder="Procedimento" value="" name="name" required>
                             </div>
+
                         </div>
+
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Adicionar</button>
                         </div>
+
                 </form>
             </div>
         </div>
 </template>
-<template id="edit-procedure">
-    {{-- EDITAR PROCEDIMENTO --}}
-        <div class="box box-warning">
-            <div class="box-header">
-                <h3 class="box-title center">Editar Procedimento</h3><span class="close" @click="close">x</span>
-                <form role="form" class="form-horizontal">
-                        <div class="form-group" style="padding-top:20px;">
-                            <label for="first_name" class="col-sm-2 control-label">Nome</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="first_name" placeholder="Nome" value="">
-                            </div>
-                        </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Editar</button>
-                        </div>
-                </form>
-            </div>
-         </div>
-
-</template>
-
 
     <script>
     Vue.component('add-procedure', {

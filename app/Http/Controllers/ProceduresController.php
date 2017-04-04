@@ -14,9 +14,9 @@ class ProceduresController extends Controller
      */
     public function index()
     {
-        $procedimentos = Procedure::all();
+        $procedures = Procedure::paginate(10);
 
-        return view('procedures.index', compact('procedimentos'));
+        return view('procedures.index', compact('procedures'));
     }
 
     /**
@@ -37,7 +37,18 @@ class ProceduresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $this->validate($request,[
+            'name' => 'required'
+        ]);
+
+        Procedure::create([
+            'name' => request('name')
+        ]);
+
+        return redirect()->action(
+            'ProceduresController@index'
+        );
     }
 
     /**
@@ -59,7 +70,9 @@ class ProceduresController extends Controller
      */
     public function edit($id)
     {
-        //
+        $procedure = Procedure::find($id);
+
+        return view('procedures.edit', compact('procedure'));
     }
 
     /**
@@ -71,7 +84,18 @@ class ProceduresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required'
+        ]);
+
+        $procedure = Procedure::find($id);
+
+        $procedure->name = request('name');
+        $procedure->save();
+
+        return redirect()->action(
+            'ProceduresController@index'
+        );
     }
 
     /**
