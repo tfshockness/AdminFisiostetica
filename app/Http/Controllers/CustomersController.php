@@ -13,8 +13,21 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        
+        if(count($request->all()) > 0){
+            if($request->input('search') === ''){
+                $clientes = Customer::all();
+                return view('customers.index', compact('clientes'));
+            };
+            $search = $request->input('search');
+            $clientes = Customer::where('first_name', 'like', "$search%")
+            ->orWhere('last_name', 'like', "%$search%")->paginate(10);
+            
+            return view('customers.index', compact('clientes'));
+        }
+
         $clientes = Customer::paginate(10);
 
         return view('customers.index', compact('clientes'));
@@ -149,10 +162,5 @@ class CustomersController extends Controller
         //
     }
 
-    public function search($search)
-    {
-        $fullName = explode(" ", $search);
-        $clientes = Clientes::where('');
-        return false;
-    }
+
 }
