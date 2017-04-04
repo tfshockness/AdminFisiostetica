@@ -56,6 +56,9 @@ $subtitle = "Index";
                     </tr>
                 </tbody>
             </table>
+        </div> {{-- end box-body --}}
+        <div class="box-footer pagination" align="center" style="width:100%">
+            {{ $professionals->links() }}
         </div>
     </div>
 </div>

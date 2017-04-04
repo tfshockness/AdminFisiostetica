@@ -14,20 +14,25 @@ $subtitle = "Cliente";
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" class="form-horizontal">
+            <form role="form" class="form-horizontal" action="/clientes" method="POST">
+              {{ csrf_field() }}
               <div class="box-body">
-
+                
+                <div class="form-group" style="width: 95%; margin: 0 auto;">
+                  @include('layouts.error')
+                </div>
+                
                 <div class="form-group">
                     <label for="first_name" class="col-sm-2 control-label">Nome</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="first_name" placeholder="Nome" value="">
+                      <input type="text" class="form-control" id="first_name" placeholder="Nome" name="first_name" required>
                     </div>
                   </div>
                 
                   <div class="form-group">
                     <label for="last_name" class="col-sm-2 control-label">Sobrenome</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="last_name" placeholder="Sobrenome" value="">
+                      <input type="text" class="form-control" id="last_name" placeholder="Sobrenome" name="last_name" required>
                     </div>
                   </div>
 
@@ -35,12 +40,12 @@ $subtitle = "Cliente";
                     <label for="last_name" class="col-sm-2 control-label">Sexo</label>
                       <div class="radio">
                         <label>
-                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="0" >
+                         <input type="radio" name="gender" id="optionsRadios1" value="1" required>
                           Masculino
                         </label>
 
                       <label>
-                          <input style="margin-left= 5px;" type="radio" name="optionsRadios" id="optionsRadios2" value="1">
+                          <input style="margin-left= 5px;" type="radio" name="gender" id="optionsRadios2" value="0" required>
                           Feminino
                       </label>
                     </div>
@@ -49,50 +54,37 @@ $subtitle = "Cliente";
                   <div class="form-group">
                     <label for="cpf" class="col-sm-2 control-label">CPF</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="cpf" placeholder="CPF Somente numeros" value="">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="position" class="col-sm-2 control-label">Função</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="position" placeholder="Função" value="">
+                      <input type="number" class="form-control" id="cpf" placeholder="CPF Somente numeros"  name="CPF" required>
                     </div>
                   </div>
 
                 <div class="form-group">
                     <label for="datepicker" class="col-sm-2 control-label">Nascimento</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="datepicker" placeholder="date" value="">
+                      <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" name="birth" data-date-format="dd-mm-yyyy" required>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="telephone" class="col-sm-2 control-label">Telefone</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="telephone" placeholder="Telefone" value="">
+                      <input type="number" class="form-control" id="telephone" placeholder="Telefone" name="telephone">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="cellphone" class="col-sm-2 control-label">Celular</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="cellphone" placeholder="Celular" value="">
+                      <input type="number" class="form-control" id="cellphone" placeholder="Celular" name="cellphone" required>
                     </div>
                   </div>
                   
                   <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">E-mail</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="email" placeholder="Email" value="">
+                      <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
                     </div>
                   </div>
-
-                <div class="form-group picture-input col-sm-10">
-                  <label for="picture">Adicionar foto</label>
-                  <input type="file" id="picture">
-                </div>
-
                 
               </div>
               <!-- /.box-body -->

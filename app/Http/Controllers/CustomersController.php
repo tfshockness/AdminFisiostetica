@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Customer;
+use Carbon\Carbon;
 
 class CustomersController extends Controller
 {
@@ -14,7 +15,8 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        $clientes = Customer::all();
+        $clientes = Customer::paginate(10);
+
         return view('customers.index', compact('clientes'));
     }
 
@@ -36,7 +38,38 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'gender' => 'required',
+            'CPF' => 'required|unique:customers|numeric|min:11',
+            'birth' => 'required',
+            'cellphone' => 'required|numeric',
+            'telephone' => 'nullable|numeric',
+            'email' => 'required|email'
+
+        ]);
+
+        //Fixing the Date - From dd-mm-yyyy to yyyy-mm-dd
+        $dateArr = explode("-", request('birth'));
+        $birth = Carbon::create($dateArr[2], $dateArr[1], $dateArr[0]);
+
+        Customer::create([
+            'first_name' => request('first_name'),
+            'last_name' => request('last_name'),
+            'gender' => request('gender'),
+            'CPF' => request('CPF'),
+            'birth' => $birth,
+            'telephone' => request('telephone'),
+            'cellphone' => request('cellphone'),
+            'email' => request('email')
+        ]);
+
+         $id = Customer::where('CPF', request('CPF'))->value('id');
+
+        return redirect()->action(
+            'CustomersController@show', ['id' => $id]
+        );
     }
 
     /**
@@ -71,7 +104,38 @@ class CustomersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+            $this->validate($request, [
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'gender' => 'required',
+                'CPF' => 'required|max:11|min:11',
+                'birth' => 'required',
+                'cellphone' => 'required',
+                'email' => 'required',
+
+            ]);
+
+            $customer = Customer::find($id);
+
+            //Fixing the Date - From dd-mm-yyyy to yyyy-mm-dd
+            //OBS: the separator here is different :(
+            $dateArr = explode("-", request('birth'));
+            $birth = Carbon::create($dateArr[0], $dateArr[1], $dateArr[2]);
+
+            $customer->first_name = request('first_name');
+            $customer->last_name = request('last_name');
+            $customer->gender = request('gender');
+            $customer->CPF = request('CPF');
+            $customer->birth = $birth;
+            $customer->telephone = request('telephone');
+            $customer->cellphone = request('cellphone');
+            $customer->email = request('email');
+
+            $customer->save();
+                        
+            return redirect()->action(
+            'CustomersController@show', ['id' => $customer->id]
+        );
     }
 
     /**
@@ -83,5 +147,12 @@ class CustomersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search($search)
+    {
+        $fullName = explode(" ", $search);
+        $clientes = Clientes::where('');
+        return false;
     }
 }

@@ -9,6 +9,11 @@ $subtitle = "Profissional";
 <link rel="stylesheet" href="{{ URL::asset('plugins/fullcalendar/fullcalendar.print.css')}}" media="print">
 @endsection
 @section('content')
+
+    <div class="form-group" style="width: 95%; margin: 0 auto;">
+        @include('layouts.error')
+    </div>
+
 <!-- Main content -->
     <section class="content">
 
@@ -18,7 +23,8 @@ $subtitle = "Profissional";
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+
+              <img class="profile-user-img img-responsive img-circle" src="{{URL::asset('img/avatar2.png')}}" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{$professional->first_name}}&nbsp;{{$professional->last_name}}</h3>
 
@@ -26,7 +32,7 @@ $subtitle = "Profissional";
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Telefone</b> <a class="pull-right">{{$professional->telphone ?: "-"}}</a>
+                  <b>Telefone</b> <a class="pull-right">{{$professional->telephone ?: "-"}}</a>
                 </li>
                 <li class="list-group-item">
                   <b>Celular</b> <a class="pull-right">{{$professional->cellphone ?: "-"}}</a>
@@ -98,74 +104,73 @@ $subtitle = "Profissional";
 <!-- -------------------- EDITAR STARTS HERE --------------------- -->
 
               <div class="tab-pane" id="editar">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="{{ action('ProfessionalsController@update', ['id' => $professional->id]) }}" method="POST">
+                {{ method_field('PUT') }}
+                  {{ csrf_field() }}
+
 
                   <div class="form-group">
                     <label for="first_name" class="col-sm-2 control-label">Nome</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="first_name" placeholder="Nome" value="{{$professional->first_name}}">
+                      <input type="text" class="form-control" id="first_name" placeholder="Nome" value="{{$professional->first_name}}" name="first_name" required>
                     </div>
                   </div>
                 
                   <div class="form-group">
                     <label for="last_name" class="col-sm-2 control-label">Sobrenome</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="last_name" placeholder="Sobrenome" value="{{$professional->last_name}}">
+                      <input type="text" class="form-control" id="last_name" placeholder="Sobrenome" value="{{$professional->last_name}}" name="last_name" required>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="cpf" class="col-sm-2 control-label">CPF</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="cpf" placeholder="CPF Somente numeros" value="{{$professional->CPF}}">
+                      <input type="number" class="form-control" id="cpf" placeholder="CPF Somente numeros" value="{{$professional->CPF}}" name="CPF" required>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="position" class="col-sm-2 control-label">Função</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="position" placeholder="Função" value="{{$professional->position}}">
+                      <input type="text" class="form-control" id="position" placeholder="Função" value="{{$professional->position}}" name="position" required>
                     </div>
                   </div>
 
                 <div class="form-group">
                     <label for="datepicker" class="col-sm-2 control-label">Nascimento</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="datepicker" placeholder="date" value="{{$professional->birth}}">
+                      <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" value="{{$professional->birth->toDateString()}}" name="birth" data-date-format="dd-mm-yyyy" required>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="telephone" class="col-sm-2 control-label">Telefone</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="telephone" placeholder="Telefone" value="{{$professional->telephone}}">
+                      <input type="number" class="form-control" id="telephone" placeholder="Telefone" value="{{$professional->telephone}}" name="telephone">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="cellphone" class="col-sm-2 control-label">Celular</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="cellphone" placeholder="Celular" value="{{$professional->cellphone}}">
+                      <input type="number" class="form-control" id="cellphone" placeholder="Celular" value="{{$professional->cellphone}}" name="cellphone" required>
                     </div>
                   </div>
                   
                   <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">E-mail</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="email" placeholder="Email" value="{{$professional->email}}">
+                      <input type="email" class="form-control" id="email" placeholder="Email" value="{{$professional->email}}" name="email" required>
                     </div>
                   </div>
-    
-                <div class="form-group col-md-10">
-                  <label for="picture">Adicionar Foto</label>
-                  <input type="file" id="picture">
-                </div>
 
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Salvar</button>
+                      <button type="submit" class="btn btn-danger">Editar</button>
                     </div>
                   </div>
+
                 </form>
               </div>
               <!-- /.tab-pane -->
@@ -183,10 +188,6 @@ $subtitle = "Profissional";
     @endsection
 
     @section('script')
-    <!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
-
 <!-- fullCalendar 2.2.5 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="{{ URL::asset('plugins/fullcalendar/fullcalendar.min.js') }}"></script>

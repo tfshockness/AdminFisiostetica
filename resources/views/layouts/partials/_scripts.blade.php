@@ -1,4 +1,5 @@
         <script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ URL::asset('plugins/fastclick/fastclick.js') }}"></script>
         <script src="{{ URL::asset('js/admin_app.min.js') }}"></script>
@@ -16,7 +17,7 @@
 <script>
     $(document).ready(function () {
         $('#datepicker').datepicker({
-                format: 'dd/mm/yyyy'
+                format: 'dd-mm-yyyy'
                 });
         
     });

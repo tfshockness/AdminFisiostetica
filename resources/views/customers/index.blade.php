@@ -56,6 +56,9 @@ $subtitle = "Lista de Clientes";
                     </tr>
                 </tbody>
             </table>
+        </div> {{-- end Box-body --}}
+        <div class="box-footer pagination" align="center" style="width:100%">
+            {{ $clientes->links() }}
         </div>
     </div>
 </div>
