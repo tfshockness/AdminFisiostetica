@@ -53,8 +53,9 @@ $subtitle = "Lista de Clientes";
                                 <i class="fa fa-list"></i> Detalhes
                             </a>
                         </td>
-                @endforeach
                     </tr>
+                @endforeach
+                    
                 </tbody>
             </table>
         </div> {{-- end Box-body --}}

@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Finance extends Model
 {
+
+	protected $dates = ['add_at'];
+
 	public static function getBalance(){
 		$balance = self::orderBy('id', 'DESC')->first();
 		if($balance === null){

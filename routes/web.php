@@ -10,11 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Customized routes
 Route::get('/agenda/datas', 'AppointmentsController@ajaxdate');
+
+
+//REST
 Route::resource('/profissionais', 'ProfessionalsController');
 Route::resource('/clientes', 'CustomersController');
 Route::resource('/procedimentos', 'ProceduresController');
 Route::resource('/agenda', 'AppointmentsController');
+Route::resource('/financeiro', 'FinancesController');
+
+//Rules
 Route::get('/admin', 'AdminController@index');
 
 Route::get('/', function () {

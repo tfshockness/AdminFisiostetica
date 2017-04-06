@@ -54,8 +54,9 @@ $subtitle = "Lista de Procedimentos";
                                     <i class="fa fa-edit"></i> Editar
                                 </a>
                             </td>
-                    @endforeach
                         </tr>
+                    @endforeach
+                        
                     </tbody>
                 </table>
             </div> {{-- end box-body --}}

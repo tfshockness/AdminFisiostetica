@@ -87,20 +87,13 @@ $subtitle = "Lista de agendamento";
                                 <i class="fa fa-edit"></i> Edit
                             </a>
                         </td>
-                @endforeach
                     </tr>
+                @endforeach
+                    
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
-
-<script>
-new Vue({
-    
-})
-</script>
-
 
 @endsection
