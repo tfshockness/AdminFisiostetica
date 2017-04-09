@@ -58,7 +58,7 @@
         </li>
 
         <li>
-          <a href="#">
+          <a href="{{url('financeiro/')}}">
             <i class="fa fa-table"></i> <span>Financeiro</span>
           </a>
         </li>
@@ -130,7 +130,7 @@
                     <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
                     <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
                   </ul>
-                  
+
                 </li>
 
               </ul>
@@ -147,7 +147,7 @@
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
 
-        
+
       </ul>
     </section>
     <!-- /.sidebar -->

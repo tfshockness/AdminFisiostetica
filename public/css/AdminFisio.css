@@ -1,5 +1,14 @@
 /** GLOBAL CONF **/
+.left{
+  float:left;
+}
 
+.right{
+  float:right;
+}
+.link-home{
+  color: white;
+}
 .search-box{
     margin-top:20px;
 }

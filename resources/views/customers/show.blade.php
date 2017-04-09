@@ -1,4 +1,4 @@
-<?php 
+<?php
 $title = "Detalhes do";
 $subtitle = "Cliente";
 ?>
@@ -38,6 +38,9 @@ $subtitle = "Cliente";
               <p class="text-muted text-center">{{$customer->position}}</p>
 
               <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>CPF</b> <a class="pull-right">{{$customer->CPF}}</a>
+                </li>
                 <li class="list-group-item">
                   <b>Telefone</b> <a class="pull-right">{{$customer->telephone ?: "-"}}</a>
                 </li>
@@ -120,7 +123,7 @@ $subtitle = "Cliente";
                       <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Nome" value="{{$customer->first_name}}" required>
                     </div>
                   </div>
-                
+
                   <div class="form-group">
                     <label for="last_name" class="col-sm-2 control-label">Sobrenome</label>
                     <div class="col-sm-10">
@@ -184,7 +187,7 @@ $subtitle = "Cliente";
                       <input type="number" class="form-control" id="cellphone" placeholder="Celular" name="cellphone" value="{{$customer->cellphone}}" required>
                     </div>
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">E-mail</label>
                     <div class="col-sm-10">
@@ -284,7 +287,7 @@ $subtitle = "Cliente";
                     allDay:false,
                     url: '/clientes/{{$app->customer_id}}', //Mudar para Detalhe do agendamento
                     backgroundColor: "{{$app->getColor($app->status)}}", //Primary (light-blue)
-                    borderColor: "{{$app->getColor($app->status)}}" 
+                    borderColor: "{{$app->getColor($app->status)}}"
                 },
               @endforeach
               {
@@ -362,5 +365,3 @@ $subtitle = "Cliente";
 
 
     @endsection
-
-    

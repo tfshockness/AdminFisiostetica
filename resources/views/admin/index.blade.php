@@ -1,4 +1,4 @@
-<?php 
+<?php
 $title = "Home";
 $subtitle = "Page";
 ?>
@@ -14,10 +14,10 @@ $subtitle = "Page";
 
 <!-- Small boxes (Stat box) -->
       <div class="row home-btn">
-        
+
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="info-box bg-yellow">
-            <span class="info-box-icon"><i class="ion ion-person-add"></i></span>
+            <a href="{{url('clientes/create')}}" class="link-home"><span class="info-box-icon"><i class="ion ion-person-add"></i></span></a>
 
             <div class="info-box-content">
               <span class="info-box-text">Novo Cliente</span>
@@ -34,7 +34,7 @@ $subtitle = "Page";
 
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="info-box bg-red">
-            <span class="info-box-icon"><i class="ion ion-clock"></i></span>
+            <a href="{{url('agenda/create')}}" class="link-home"><span class="info-box-icon"><i class="ion ion-clock"></i></span></a>
 
             <div class="info-box-content">
               <span class="info-box-text">Novo Agendamento</span>
@@ -52,7 +52,7 @@ $subtitle = "Page";
 
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="info-box bg-aqua">
-            <span class="info-box-icon"><i class="fa fa-shopping-cart"></i></span>
+            <a href="{{url('financeiro/create')}}" class="link-home"><span class="info-box-icon"><i class="fa fa-shopping-cart"></i></span></a>
 
             <div class="info-box-content">
               <span class="info-box-text">Efetuar Pagamento</span>
@@ -176,7 +176,7 @@ $subtitle = "Page";
               allDay:false,
               url: '/clientes/{{$app->customer_id}}', //Mudar para Detalhe do agendamento
               backgroundColor: "{{$app->getColor($app->status)}}", //Primary (light-blue)
-              borderColor: "{{$app->getColor($app->status)}}" 
+              borderColor: "{{$app->getColor($app->status)}}"
           },
         @endforeach
         {

@@ -15,8 +15,8 @@ class FinancesController extends Controller
      */
     public function index()
     {
-        $lancamentos = Finance::all();
-        return view('finances.index', compact('lancamentos'));
+        $finances = Finance::all();
+        return view('finances.index', compact('finances'));
     }
 
     /**
@@ -26,7 +26,7 @@ class FinancesController extends Controller
      */
     public function create()
     {
-        //
+        return view('finances.create');
     }
 
     /**
@@ -37,7 +37,26 @@ class FinancesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+          'name' => 'required',
+          'add_at' => 'required',
+          'value' => 'required|numeric',
+          'type' => 'required'
+        ]);
+
+        //Fixing the Date - From dd-mm-yyyy to yyyy-mm-dd
+        $dateArr = explode("-", request('add_at'));
+        $add_at= Carbon::create($dateArr[2], $dateArr[1], $dateArr[0]);
+
+        $f = new Finance();
+        $f->name = request('name');
+        $f->add_at = $add_at;
+        $f->value = request('value');
+        $f->type = request('type');
+        $f->setBalance();
+        $f->save();
+
+        return redirect()->action('FinancesController@index');
     }
 
     /**
@@ -59,7 +78,8 @@ class FinancesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $finance = Finance::find($id);
+        return view('finances.edit', compact('finance'));
     }
 
     /**

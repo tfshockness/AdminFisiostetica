@@ -15,7 +15,7 @@ class CustomersController extends Controller
      */
     public function index(Request $request)
     {
-        
+
         if(count($request->all()) > 0){
             if($request->input('search') === ''){
                 $clientes = Customer::all();
@@ -24,7 +24,7 @@ class CustomersController extends Controller
             $search = $request->input('search');
             $clientes = Customer::where('first_name', 'like', "$search%")
             ->orWhere('last_name', 'like', "%$search%")->paginate(10);
-            
+
             return view('customers.index', compact('clientes'));
         }
 
@@ -145,7 +145,7 @@ class CustomersController extends Controller
             $customer->email = request('email');
 
             $customer->save();
-                        
+
             return redirect()->action(
             'CustomersController@show', ['id' => $customer->id]
         );
