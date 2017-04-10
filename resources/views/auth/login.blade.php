@@ -1,68 +1,122 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ config('app.locale') }}">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+          <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
+        <title>Fisiostetica - Admin</title>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ URL::asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href="{{ URL::asset('plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('css/AdminLTE.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('css/AdminFisio.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('css/skins/_all-skins.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('css/skins/skin-blue.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ URL::asset('/plugins/datepicker/datepicker3.css')}}">
+        <link rel="stylesheet" href="{{ URL::asset('/plugins/iCheck/square/blue.css')}}">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+        @yield('css')
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+        <!-- Scripts -->
+        <script>
+                window.Laravel = {!! json_encode([
+                'csrfToken' => csrf_token(),
+                ]) !!};
+        </script>
+</head>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>FisioStetica</b>Logo</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sistema administrativo Fiostetica</p>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+    <form role="form" method="POST" action="{{ route('login') }}">
+        {{ csrf_field() }}
+        @if ($errors->has('email'))
+            <span class="help-block">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+        @endif
+      <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus placeholder="Entre com Email">
+        <span class="ion ion-email form-control-feedback" style="padding-top: 3%; font-size:20px; "></span>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+      </div>
+      
+      <div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
+        <input id="password" type="password" class="form-control" name="password" required placeholder="Sua senha">
+        <span class="ion ion-locked form-control-feedback" style="padding-top:3%;"></span>
 
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
+        @if ($errors->has('password'))
+            <span class="help-block">
+                <strong>{{ $errors->first('password') }}</strong>
+            </span>
+        @endif
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+            </label>
+          </div>
         </div>
-    </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    {{-- <a href="{{ route('password.request') }}">Esqueci Minha Senha</a><br> --}}
+
+  </div>
+  <!-- /.login-box-body -->
 </div>
-@endsection
+<!-- /.login-box -->
+
+<script src="{{ URL::asset('plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ URL::asset('plugins/fastclick/fastclick.js') }}"></script>
+<script src="{{ URL::asset('js/admin_app.min.js') }}"></script>
+<script src="{{ URL::asset('plugins/sparkline/jquery.sparkline.min.js') }}"></script>
+<script src="{{ URL::asset('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+<script src="{{ URL::asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+<script src="{{ URL::asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ URL::asset('plugins/chartjs/Chart.min.js') }}"></script>
+<script src="{{ URL::asset('/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+<script src="{{ URL::asset('/plugins/iCheck/icheck.min.js')}}"></script>
+
+
+<script src="https://unpkg.com/vue@2.2.1/dist/vue.js"></script>
+
+@yield('script')
+
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
+</body>
+</html>
