@@ -56,13 +56,14 @@
             <i class="fa fa-table"></i> <span>Profissionais</span>
           </a>
         </li>
-
+        
         <li>
           <a href="{{url('financeiro/')}}">
             <i class="fa fa-table"></i> <span>Financeiro</span>
           </a>
         </li>
-
+        
+        @if(Auth::user()->type == 777)
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i> <span>Relatorios</span>
@@ -77,7 +78,9 @@
           </ul>
 
         </li>
+        @endif
 
+        
         <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Site</span>
