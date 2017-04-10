@@ -10,30 +10,31 @@ class Finance extends Model
 	protected $guarded = ['id'];
 	protected $dates = ['add_at'];
 
-	public static function getBalance(){
-		$obj = self::orderBy('id', 'DESC')->first();
-		if($obj === null){
-			return 0;
-		}
-		else{
-			return $obj->balance;
-		}
+	//Accessor for properties
+	public function getValueAttribute($value)
+	{
+		return $value;
 	}
 
-	public function setBalance(){
-		if($this->value > 0 ){
-			$this->balance = self::getBalance();
-			if($this->type == 1){
-				//1				means income
-				$this->balance += $this->value;
-			}
-			if($this->type == 0){
-				//0				means outcome
-				$this->balance -= $this->value;
-			}
+
+	//My Functions
+	
+	public static function balance()
+	{
+		$incomes = self::where('type', 1)->get(); //1 Means Income
+		$outcomes = self::where('type', 0)->get(); //0 Means Outcome
+		$income_total = 0;
+		$outcome_total = 0;
+
+		foreach($incomes as $income){
+			$income_total += $income->value;
 		}
-		else{
-			//s			how error value need to be more than 0
+
+		foreach($outcomes as $outcome){
+			$outcome_total += $outcome->value;
 		}
+
+		return $income_total + (-$outcome_total);
 	}
+
 }

@@ -14,14 +14,14 @@ $subtitle = "Index";
             <div class="col-md-1">
                 <a class="btn btn-app bg-olive" href="{{url('profissionais/create')}}"><i class="fa fa-plus "></i>Novo</a>
             </div>
-            <form class="inline-form col-md-10">
+            <form class="inline-form col-md-10" action="/profissionais" method="GET">
                 <fildset class="form-group">
                     <div class="box-header">
                     <div class="col-md-1">
                     <label for="search">Buscar: </label>
                     </div>
                         <div class="form-group col-md-5">
-                            <input type="text" class="form-control" id="search" name="professional_name" placeholder="Digite o nome do profissional" required>
+                            <input type="text" class="form-control" id="search" name="search" placeholder="Digite o nome do profissional" >
                         </div>
                         <div class="col-md-2">
                             <input type="submit" class="btn bg-blue form-control" name="" value="buscar" >

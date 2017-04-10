@@ -20,7 +20,7 @@ $subtitle = "Novo";
                     <div class="form-group">
                         <label for="datepicker" class="col-sm-2 control-label">Data:</label>
                         <div class="col-sm-5">
-                          <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" name="add_at" value="{{$finance->add_at}}" data-date-format="dd-mm-yyyy" required>
+                          <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" name="add_at" value="{{$finance->add_at->toDateString()}}" data-date-format="dd-mm-yyyy" required>
                         </div>
                     </div>
 
@@ -42,12 +42,20 @@ $subtitle = "Novo";
                       <label for="last_name" class="col-sm-2 control-label">Tipo:</label>
                         <div class="radio">
                           <label>
-                           <input type="radio" name="type" id="optionsRadios1" value="1" required>
+                            @if($finance->type == 1)
+                            <input type="radio" name="type" id="optionsRadios1" value="1" checked required>
+                            @else
+                            <input type="radio" name="type" id="optionsRadios1" value="1" required>
+                            @endif
                             Entrada
                           </label>
 
                         <label>
+                            @if($finance->type == 0)
+                            <input style="margin-left= 5px;" type="radio" name="type" id="optionsRadios2" value="0" checked required>
+                            @else
                             <input style="margin-left= 5px;" type="radio" name="type" id="optionsRadios2" value="0" required>
+                            @endif
                             Saida
                         </label>
                       </div>

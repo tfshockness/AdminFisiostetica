@@ -33,7 +33,7 @@ $subtitle = "Novo";
                     <div class="form-group">
                       <label for="cpf" class="col-sm-2 control-label">Valor:</label>
                       <div class="col-sm-5">
-                        <input type="number" class="form-control"  placeholder="100.00"  name="value" required>
+                        <input type="text" class="form-control"  placeholder="100.00"  name="value" required>
                       </div>
                     </div>
 
@@ -54,7 +54,7 @@ $subtitle = "Novo";
 
 
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Editar</button>
+                            <button type="submit" class="btn btn-primary">Lançar</button>
                         </div>
                 </form>
             </div>

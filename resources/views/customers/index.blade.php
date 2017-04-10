@@ -15,7 +15,6 @@ $subtitle = "Lista de Clientes";
                 <a class="btn btn-app bg-olive" href="{{url('clientes/create')}}"><i class="fa fa-plus "></i>Novo</a>
             </div>
             <form class="inline-form col-md-10" action="/clientes" method="GET">
-                {{ csrf_field() }}
                 <fildset class="form-group">
                     <div class="box-header">
                     <div class="col-md-1">

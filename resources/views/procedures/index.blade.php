@@ -18,17 +18,17 @@ $subtitle = "Lista de Procedimentos";
                 <div class="col-md-1">
                     <a class="btn btn-app bg-olive" @click.prevent="showAdd"><i class="fa fa-plus "></i>Novo</a>
                 </div>
-                <form class="inline-form col-md-10">
+                <form class="inline-form col-md-10" action="/procedimentos" method="GET">
                     <fieldset class="form-group">
                         <div class="box-header">
                             <div class="col-md-1">
                                 <label for="search">Buscar: </label>
                             </div>
                             <div class="form-group col-md-5">
-                                <input type="text" class="form-control" id="search" name="professional_name" placeholder="Digite o nome do procedimento" required>
+                                <input type="text" class="form-control" id="search" name="search" placeholder="Digite o nome do procedimento" >
                             </div>
                             <div class="col-md-2">
-                                <input type="submit" class="btn bg-blue form-control" name="" value="buscar" >
+                                <input type="submit" class="btn bg-blue form-control" value="buscar" >
                             </div>
                         </div>
                     </fieldset>

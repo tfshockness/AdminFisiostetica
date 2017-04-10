@@ -16,9 +16,9 @@ $subtitle = "Resumo";
                     <div class="box-header" style="padding-bottom: 0px;">
 
                         <div class="col-xs-4 right">
-                            <div class="small-box bg-{{ (App\Finance::getBalance() > 0 ? 'green' : 'red') }}">
+                            <div class="small-box bg-{{ (App\Finance::balance() > 0 ? 'green' : 'red') }}">
                                 <div class="inner">
-                                  <h3><span>Saldo: </span>{{ App\Finance::getBalance() }}</h3>
+                                  <h3><span>Saldo: </span>{{ App\Finance::balance() }}</h3>
 
                                   <p>Saldo</p>
                                 </div>

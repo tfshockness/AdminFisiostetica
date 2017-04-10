@@ -13,9 +13,23 @@ class ProfessionalsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $professionals = Professional::paginate(10);
+        //Returning all value if Serach is empty
+        if(count($request->all()) > 0)
+        {
+            if($request->input('search') === '')
+            {
+                $professionals = Professional::paginate(10);
+                return view('professinals.index', compact('professionals'));
+            }
+        };
+        
+        //If there is search, fetch in the Db
+        $search = $request->input('search');
+        $professionals = Professional::where('first_name', 'like', "$search%")
+        ->orWhere('last_name', 'like', "%$search%")->paginate(10);
+        
 
         return view('professionals.index', compact('professionals'));
     }

@@ -53,7 +53,6 @@ class FinancesController extends Controller
         $f->add_at = $add_at;
         $f->value = request('value');
         $f->type = request('type');
-        $f->setBalance();
         $f->save();
 
         return redirect()->action('FinancesController@index');
@@ -91,7 +90,24 @@ class FinancesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+          'name' => 'required',
+          'add_at' => 'required',
+          'value' => 'required|numeric',
+          'type' => 'required'
+        ]);
+        //Fixing the Date - From dd-mm-yyyy to yyyy-mm-dd
+        $dateArr = explode("-", request('add_at'));
+        $add_at= Carbon::create($dateArr[0], $dateArr[1], $dateArr[2]);
+
+        $f = Finance::find($id);
+        $f->name = request('name');
+        $f->add_at = $add_at;
+        $f->value = request('value');
+        $f->type = request('type');
+        $f->save();
+
+        return redirect()->action('FinancesController@index');
     }
 
     /**

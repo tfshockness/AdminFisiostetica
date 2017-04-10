@@ -12,9 +12,21 @@ class ProceduresController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $procedures = Procedure::paginate(10);
+        //Returning all value if Serach is empty
+        if(count($request->all()) > 0)
+        {
+            if($request->input('search') === '')
+            {
+                $procedures = Procedure::paginate(10);
+                return view('procedures.index', compact('procedures'));
+            }
+        };
+        //If there is search, fetch in the Db
+        $search = $request->input('search');
+        $procedures = Procedure::where('name', 'like', "$search%")->paginate(10);
+        
 
         return view('procedures.index', compact('procedures'));
     }

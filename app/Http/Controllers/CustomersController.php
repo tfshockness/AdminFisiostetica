@@ -15,12 +15,13 @@ class CustomersController extends Controller
      */
     public function index(Request $request)
     {
-
+        //Returning all value if Serach is empty
         if(count($request->all()) > 0){
             if($request->input('search') === ''){
-                $clientes = Customer::all();
+                $clientes = Customer::paginate(10);
                 return view('customers.index', compact('clientes'));
             };
+            //If there is search, fetch in the Db
             $search = $request->input('search');
             $clientes = Customer::where('first_name', 'like', "$search%")
             ->orWhere('last_name', 'like', "%$search%")->paginate(10);
@@ -161,6 +162,5 @@ class CustomersController extends Controller
     {
         //
     }
-
 
 }
