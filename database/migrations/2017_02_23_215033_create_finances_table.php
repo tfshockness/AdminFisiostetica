@@ -20,7 +20,6 @@ class CreateFinancesTable extends Migration
 			$table->date('add_at');
 			$table->decimal('value');
 			$table->boolean('type');
-			$table->decimal('balance');
 			$table->timestamps();
 		}
 		);
