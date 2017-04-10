@@ -27,3 +27,7 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/', function () {
     return redirect ('/admin');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
