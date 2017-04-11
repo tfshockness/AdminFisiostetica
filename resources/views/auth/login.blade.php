@@ -36,7 +36,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>FisioStetica</b>Logo</a>
+    <a href="#"><b>FisioStetica</b>Admin</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -72,7 +72,7 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+              <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Continuar Logado
             </label>
           </div>
         </div>
