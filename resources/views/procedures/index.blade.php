@@ -35,9 +35,9 @@ $subtitle = "Lista de Procedimentos";
                 </form>
             </div>
             {{-- PLACE FOR PUT ADD AND EDIT PROCEDURES --}}
-
-            <add-procedure v-if="isThere" @closeAdd="isThere = false"></add-procedure>
-
+            <transition name="fade">
+                <add-procedure v-if="isThere" :closing="closing"></add-procedure>
+            </transition>
             {{-- END THE PLACE FOR ADD AND EDIT --}}
             <div class="box-body table-bordered no-padding">
                 <table class="table table-bordered table-hover">
@@ -68,43 +68,35 @@ $subtitle = "Lista de Procedimentos";
 </div>
 @endsection
 @section('script')
-<template id="add-procedure">
-    {{-- ADICIONAR PROCEDIMENTO --}}
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title center">Adicionar Procedimento</h3><span class="close" @click="close">x</span>
-                <form role="form" class="form-horizontal" action="/procedimentos" method="POST">
-                    {{ csrf_field() }}
-                        <div class="form-group" style="padding-top:20px;">
-                            <label for="first_name" class="col-sm-2 control-label">Nome</label>
-
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" id="name" placeholder="Procedimento" value="" name="name" required>
-                            </div>
-
-                        </div>
-
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Adicionar</button>
-                        </div>
-
-                </form>
-            </div>
-        </div>
-</template>
 
     <script>
-    Vue.component('add-procedure', {
-        props:[],
-        template:'#add-procedure',
-        methods: {
-            close(){
-                this.$emit('closeAdd');
-            }
-        }
+var addProcedure = { template:
+`
+                    <div id="add-procedure">
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title center">Adicionar Procedimento</h3><span class="close" @click="closing">x</span>
+                                    <form role="form" class="form-horizontal" action="/procedimentos" method="POST">
+                                        {{ csrf_field() }}
+                                            <div class="form-group" style="padding-top:20px;">
+                                                <label for="first_name" class="col-sm-2 control-label">Nome</label>
 
-    });
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control" id="name" placeholder="Procedimento" value="" name="name" required>
+                                                </div>
 
+                                            </div>
+
+                                            <div class="box-footer">
+                                                <button type="submit" class="btn btn-primary">Adicionar</button>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                    </div>
+`,
+    props:['closing']
+};
 
 
         new Vue({
@@ -119,6 +111,10 @@ $subtitle = "Lista de Procedimentos";
                 closing(){
                     this.isThere = false;
                 }
+            },
+            components: {'add-procedure': addProcedure},
+            created(){
+                this.$on('closeAdd', this.closing);
             }
         })
     </script>

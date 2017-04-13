@@ -1,28 +1,48 @@
 /** GLOBAL CONF **/
-.left{
-  float:left;
+
+.left {
+    float: left;
 }
 
-.right{
-  float:right;
-}
-.link-home{
-  color: white;
-}
-.search-box{
-    margin-top:20px;
+.right {
+    float: right;
 }
 
-.create-box{
-    margin-top:40px;
+.link-home {
+    color: white;
 }
 
-.content-header{
+.search-box {
+    margin-top: 20px;
+}
+
+.create-box {
+    margin-top: 40px;
+}
+
+.content-header {
     margin-bottom: 15px;
 }
 
-.home-btn{
-    margin:0 auto;
-    width:90%;
+.home-btn {
+    margin: 0 auto;
+    width: 90%;
     padding-top: 30px;
+}
+
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    transition: opacity .5s;
+}
+
+.fade-leave {
+    opacity: 1;
+}
+
+.fade-leave-active {
+    transition: opacity .3s;
+    opacity: 0;
 }
