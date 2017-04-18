@@ -13,7 +13,7 @@ $subtitle = "Lista de agendamento";
     
         <div class="row search-box center">
             <form class="inline-form">
-                <fildset class="form-group">
+                <fieldset class="form-group">
                     <div class="box-header">
                         <div class="col-md-2">
                             <a class="btn btn-app bg-olive" href="{{ url('agenda/create') }}"><i class="fa fa-plus "></i>Novo</a>
@@ -36,7 +36,7 @@ $subtitle = "Lista de agendamento";
                             <input type="submit" class="btn bg-blue form-control" name="" value="buscar" >
                         </div>
                     </div>
-                </fildset>
+                </fieldset>
             </form>
         </div>
 
@@ -80,7 +80,7 @@ $subtitle = "Lista de agendamento";
                         <td class="btn {{$status}}" style="margin-left:15%;">{{$appointment->status}}</td>
                         <td>{{$appointment->professional->first_name}}</td>
                         <td>
-                        <a class="btn bg-blue" href="{{url('profissionais/')}}/{{$appointment->id}}">
+                        <a class="btn bg-blue" href="{{url('agenda/')}}/{{$appointment->id}}">
                                 <i class="fa fa-list"></i> Detalhes
                             </a>
                             <a class="btn bg-olive" href="">

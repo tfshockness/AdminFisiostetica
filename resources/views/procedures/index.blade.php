@@ -37,7 +37,7 @@ $subtitle = "Lista de Procedimentos";
             {{-- PLACE FOR PUT ADD AND EDIT PROCEDURES --}}
 
             <transition name="fade">
-                <add-procedure v-if="isThere" :closing="closing"></add-procedure>
+                <app-add-procedure v-if="isThere" :closing="closing"></app-add-procedure>
             </transition>
             
             {{-- END THE PLACE FOR ADD AND EDIT --}}

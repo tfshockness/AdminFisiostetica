@@ -14,6 +14,7 @@ require('./bootstrap');
 
 import addProcedure from './components/admin/addProcedure.vue';
 import example from './components/Example.vue';
+import showAppointment from './components/admin/showAppointment.vue';
 
 // Vue.component('example', require('./components/Example.vue'));
 
@@ -34,7 +35,7 @@ const app = new Vue({
     },
 
     components: {
-        'add-procedure': addProcedure,
-        'example': example
+        'app-add-procedure': addProcedure,
+        'app-show-appoint': showAppointment
     }
 });

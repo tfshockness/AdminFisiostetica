@@ -30,9 +30,13 @@ class AppointmentsController extends Controller
     }
 
     public function ajaxdate(){
-        $datas = Appointment::all();
-        
-        return $datas;
+        $data = Appointment::find(1);
+        $app->professional = $data->professional->first_name . ' ' . $data->professional->last_name;
+        $app->customer = $data->customer->first_name . ' ' . $data->customer->last_name;
+        $app->date = $data->start_at->toDateString();
+        $app->start_at = $data->start_at->hour . ':' . $data->start_at->minute;
+
+        return $data;
     }
     /**
      * Show the form for creating a new resource.
@@ -87,7 +91,9 @@ class AppointmentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $appointment = Appointment::find($id);
+        
+        return view ('appointments.show', compact('appointment'));
     }
 
     /**
