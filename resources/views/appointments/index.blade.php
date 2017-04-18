@@ -16,7 +16,7 @@ $subtitle = "Lista de agendamento";
                 <fildset class="form-group">
                     <div class="box-header">
                         <div class="col-md-2">
-                            <a class="btn btn-app bg-olive" href="#"><i class="fa fa-plus "></i>Novo</a>
+                            <a class="btn btn-app bg-olive" href="{{ url('agenda/create') }}"><i class="fa fa-plus "></i>Novo</a>
                         </div>
                      <!-- Date range -->
                         <div class="col-md-4">

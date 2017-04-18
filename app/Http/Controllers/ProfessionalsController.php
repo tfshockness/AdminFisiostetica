@@ -86,6 +86,7 @@ class ProfessionalsController extends Controller
             'cellphone' => request('cellphone'),
             'email' => request('email')
         ]);
+
         $id = Professional::where('CPF', request('CPF'))->value('id');
 
 
