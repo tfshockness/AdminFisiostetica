@@ -3,7 +3,7 @@
     @include ('layouts.partials._head')
 
     <body class="skin-purple-light sidebar-mini">
-        <div class="wrapper">
+        <div class="wrapper" id="app">
         @include ('layouts.partials._header')
         @include ('layouts.partials._side_menu')
             <div class="content-wrapper" style="overflow: auto;">

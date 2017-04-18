@@ -35,9 +35,11 @@ $subtitle = "Lista de Procedimentos";
                 </form>
             </div>
             {{-- PLACE FOR PUT ADD AND EDIT PROCEDURES --}}
+
             <transition name="fade">
                 <add-procedure v-if="isThere" :closing="closing"></add-procedure>
             </transition>
+            
             {{-- END THE PLACE FOR ADD AND EDIT --}}
             <div class="box-body table-bordered no-padding">
                 <table class="table table-bordered table-hover">
@@ -67,6 +69,7 @@ $subtitle = "Lista de Procedimentos";
     </div>
 </div>
 @endsection
+{{-- 
 @section('script')
 
     <script>
@@ -118,4 +121,4 @@ var addProcedure = { template:
             }
         })
     </script>
-@endsection
+@endsection --}}

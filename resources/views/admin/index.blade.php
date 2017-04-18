@@ -10,10 +10,6 @@ $subtitle = "Page";
 @endsection
 @section ('content')
 
-<div id="app">
-  <example></example>
-</div>
-
 <!-- Small boxes (Stat box) -->
       <div class="row home-btn">
 

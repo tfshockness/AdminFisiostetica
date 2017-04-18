@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -13,8 +12,29 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+import addProcedure from './components/admin/addProcedure.vue';
+import example from './components/Example.vue';
+
+// Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    data: {
+        isThere: false
+    },
+
+    methods: {
+        showAdd() {
+            this.isThere = true;
+        },
+        closing() {
+            this.isThere = false;
+        }
+    },
+
+    components: {
+        'add-procedure': addProcedure,
+        'example': example
+    }
 });
