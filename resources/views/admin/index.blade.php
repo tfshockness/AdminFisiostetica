@@ -156,7 +156,7 @@ $subtitle = "Page";
       events: [
          @foreach ($appointments as $app)
           {
-            title: '{{$app->status}}',
+            title: '{{$app->customer->first_name}} {{$app->customer->last_name}}',
             start: new Date(
               {{$app->start_at->year}}, //Ano
               {{$app->start_at->month}} - 1, //Mes
