@@ -83,7 +83,7 @@ $subtitle = "Lista de agendamento";
                         <a class="btn bg-blue" href="{{url('agenda/')}}/{{$appointment->id}}">
                                 <i class="fa fa-list"></i> Detalhes
                             </a>
-                            <a class="btn bg-olive" href="">
+                            <a class="btn bg-olive" href="/agenda/{{$appointment->id}}/edit">
                                 <i class="fa fa-edit"></i> Edit
                             </a>
                         </td>

@@ -104,7 +104,10 @@ class AppointmentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $procedures = Procedure::all();
+        $professionals = Professional::all();
+        $appointment = Appointment::find($id);
+        return view('appointments.edit', compact('appointment', 'procedures', 'professionals'));
     }
 
     /**

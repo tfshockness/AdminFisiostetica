@@ -106,33 +106,6 @@ $subtitle = "Page";
 <script src="{{ URL::asset('plugins/fullcalendar/fullcalendar.min.js') }}"></script>
 <script>
   $(function () {
-
-    /* initialize the external events
-     -----------------------------------------------------------------*/
-    function ini_events(ele) {
-      ele.each(function () {
-
-        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-        // it doesn't need to have a start or end
-        var eventObject = {
-          title: $.trim($(this).text()) // use the element's text as the event title
-        };
-
-        // store the Event Object in the DOM element so we can get to it later
-        $(this).data('eventObject', eventObject);
-
-        // make the event draggable using jQuery UI
-        $(this).draggable({
-          zIndex: 1070,
-          revert: true, // will cause the event to go back to its
-          revertDuration: 0  //  original position after the drag
-        });
-
-      });
-    }
-
-    ini_events($('#external-events div.external-event'));
-
     /* initialize the calendar
      -----------------------------------------------------------------*/
     //Date for the calendar events (dummy data)
@@ -141,111 +114,60 @@ $subtitle = "Page";
         m = date.getMonth(),
         y = date.getFullYear();
     $('#calendar').fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-      },
-      buttonText: {
-        today: 'hoje',
-        month: 'mês',
-        week: 'semana',
-        day: 'dia'
-      },
-      //Random default events - Pegar Evento do banco de Dados e jogar aki!!!!
-      events: [
-         @foreach ($appointments as $app)
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay,listWeek'
+        },
+
+        buttonText: {
+            today: 'hoje',
+            month: 'mês',
+            week: 'semana',
+            day: 'dia',
+            list: 'lista'
+        },
+
+        navLinks: true, // can click day/week names to navigate views
+
+        selectable: true,
+
+        selectHelper: true,
+
+        editable: false,
+
+        eventLimit: false, // allow "more" link when too many events
+
+        //Random default events - Pegar Evento do banco de Dados e jogar aki!!!!
+        events: [
+          @foreach ($appointments as $app)
+            {
+              title: '{{$app->customer->first_name}} {{$app->customer->last_name}}',
+              start: '{{$app->start_at->toDateTimeString()}}',
+                end: '{{$app->end_at->toDateTimeString()}}',
+                allDay:false,
+                url: '/clientes/{{$app->customer_id}}', //Mudar para Detalhe do agendamento
+                backgroundColor: "{{$app->getColor($app->status)}}", //Primary (light-blue)
+                borderColor: "{{$app->getColor($app->status)}}"
+            },
+          @endforeach
           {
-            title: '{{$app->customer->first_name}} {{$app->customer->last_name}}',
-            start: new Date(
-              {{$app->start_at->year}}, //Ano
-              {{$app->start_at->month}} - 1, //Mes
-              {{$app->start_at->day}}, //Dia
-              {{$app->start_at->hour}}, //hora
-              {{$app->start_at->minute}} //min
-              ),
-              end: new Date(
-              {{$app->end_at->year}}, //Ano
-              {{$app->end_at->month}} - 1, //Mes
-              {{$app->end_at->day}}, //Dia
-              {{$app->start_at->hour}}, //hora
-              {{$app->start_at->minute}} //min
-              ),
-              allDay:false,
-              url: '/clientes/{{$app->customer_id}}', //Mudar para Detalhe do agendamento
-              backgroundColor: "{{$app->getColor($app->status)}}", //Primary (light-blue)
-              borderColor: "{{$app->getColor($app->status)}}"
-          },
-        @endforeach
-        {
-          title: 'Pra nao bugar o Calendario',
-          start: new Date(y - 20, m, 28), //
-          end: new Date(y - 20, m, 29),
-          url: 'http://google.com/',
-          backgroundColor: "#3c8dbc", //Primary (light-blue)
-          borderColor: "#3c8dbc" //Primary (light-blue)
-        }
-      ],
-      editable: true,
-      droppable: true, // this allows things to be dropped onto the calendar !!!
-      drop: function (date, allDay) { // this function is called when something is dropped
-
-        // retrieve the dropped element's stored Event Object
-        var originalEventObject = $(this).data('eventObject');
-
-        // we need to copy it, so that multiple events don't have a reference to the same object
-        var copiedEventObject = $.extend({}, originalEventObject);
-
-        // assign it the date that was reported
-        copiedEventObject.start = date;
-        copiedEventObject.allDay = allDay;
-        copiedEventObject.backgroundColor = $(this).css("background-color");
-        copiedEventObject.borderColor = $(this).css("border-color");
-
-        // render the event on the calendar
-        // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-        $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-        // is the "remove after drop" checkbox checked?
-        if ($('#drop-remove').is(':checked')) {
-          // if so, remove the element from the "Draggable Events" list
-          $(this).remove();
-        }
-
-      }
-    });
-
-    /* ADDING EVENTS */
-    var currColor = "#3c8dbc"; //Red by default
-    //Color chooser button
-    var colorChooser = $("#color-chooser-btn");
-    $("#color-chooser > li > a").click(function (e) {
-      e.preventDefault();
-      //Save color
-      currColor = $(this).css("color");
-      //Add color effect to button
-      $('#add-new-event').css({"background-color": currColor, "border-color": currColor});
-    });
-    $("#add-new-event").click(function (e) {
-      e.preventDefault();
-      //Get value and make sure it is not null
-      var val = $("#new-event").val();
-      if (val.length == 0) {
-        return;
-      }
-
-      //Create events
-      var event = $("<div />");
-      event.css({"background-color": currColor, "border-color": currColor, "color": "#fff"}).addClass("external-event");
-      event.html(val);
-      $('#external-events').prepend(event);
-
-      //Add draggable funtionality
-      ini_events(event);
-
-      //Remove event from text input
-      $("#new-event").val("");
+            title: 'Pra nao bugar o Calendario',
+            start: new Date(y - 20, m, 28), //
+            end: new Date(y - 20, m, 29),
+            url: 'http://google.com/',
+            backgroundColor: "#3c8dbc", //Primary (light-blue)
+            borderColor: "#3c8dbc" //Primary (light-blue)
+          }
+        ]
     });
   });
 </script>
 @endsection
+
+
+
+
+
+
+

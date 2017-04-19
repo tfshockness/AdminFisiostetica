@@ -16,7 +16,7 @@
                 </div>
             </div>
     </div>
-</template>
+</template>s
 <script>
 export default {
     data(){
