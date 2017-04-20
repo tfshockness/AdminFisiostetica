@@ -170,7 +170,7 @@ $subtitle = "Cliente";
                 <div class="form-group">
                     <label for="datepicker" class="col-sm-2 control-label">Nascimento</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" name="birth" value="{{$customer->birth->toDateString()}}" data-date-format="dd-mm-yyyy" required>
+                      <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" name="birth" value="{{$customer->birth->format('d-m-Y')}}" data-date-format="dd-mm-yyyy" required>
                     </div>
                   </div>
 
@@ -285,9 +285,9 @@ $subtitle = "Cliente";
                   start: '{{$app->start_at->toDateTimeString()}}',
                     end: '{{$app->end_at->toDateTimeString()}}',
                     allDay:false,
-                    url: '/clientes/{{$app->customer_id}}', //Mudar para Detalhe do agendamento
-                    backgroundColor: "{{$app->getColor($app->status)}}", //Primary (light-blue)
-                    borderColor: "{{$app->getColor($app->status)}}"
+                    url: '/agenda/{{$app->id}}', //Mudar para Detalhe do agendamento
+                    backgroundColor: "{{$app->getColor()}}", //Primary (light-blue)
+                    borderColor: "{{$app->getColor()}}"
                 },
               @endforeach
               {

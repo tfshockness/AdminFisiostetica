@@ -20,7 +20,7 @@ $subtitle = "Novo";
                     <div class="form-group">
                         <label for="datepicker" class="col-sm-2 control-label">Data:</label>
                         <div class="col-sm-5">
-                          <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" name="add_at" value="{{$finance->add_at->toDateString()}}" data-date-format="dd-mm-yyyy" required>
+                          <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" name="add_at" value="{{$finance->add_at->format('d-m-Y')}}" data-date-format="dd-mm-yyyy" required>
                         </div>
                     </div>
 
@@ -34,7 +34,7 @@ $subtitle = "Novo";
                     <div class="form-group">
                       <label for="cpf" class="col-sm-2 control-label">Valor:</label>
                       <div class="col-sm-5">
-                        <input type="number" class="form-control"  placeholder="100.00"  name="value" value="{{$finance->value}}" required>
+                        <input type="number" step="0.05" class="form-control"  placeholder="100.00"  name="value" value="{{$finance->value}}" required>
                       </div>
                     </div>
 

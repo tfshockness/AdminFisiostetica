@@ -140,7 +140,7 @@ class CustomersController extends Controller
             //Fixing the Date - From dd-mm-yyyy to yyyy-mm-dd
             //OBS: the separator here is different :(
             $dateArr = explode("-", request('birth'));
-            $birth = Carbon::create($dateArr[0], $dateArr[1], $dateArr[2]);
+            $birth = Carbon::create($dateArr[2], $dateArr[1], $dateArr[0]);
 
             $customer->first_name = request('first_name');
             $customer->last_name = request('last_name');

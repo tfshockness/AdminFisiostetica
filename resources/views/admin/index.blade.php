@@ -146,9 +146,9 @@ $subtitle = "Page";
               start: '{{$app->start_at->toDateTimeString()}}',
                 end: '{{$app->end_at->toDateTimeString()}}',
                 allDay:false,
-                url: '/clientes/{{$app->customer_id}}', //Mudar para Detalhe do agendamento
-                backgroundColor: "{{$app->getColor($app->status)}}", //Primary (light-blue)
-                borderColor: "{{$app->getColor($app->status)}}"
+                url: '/agenda/{{$app->id}}', //Mudar para Detalhe do agendamento
+                backgroundColor: "{{$app->getColor()}}", //Primary (light-blue)
+                borderColor: "{{$app->getColor()}}"
             },
           @endforeach
           {

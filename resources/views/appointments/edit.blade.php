@@ -34,14 +34,14 @@ $subtitle = "Editar Agendamento";
 
                 <div class="col-sm-4">
                     <label for="first_name" class="control-label">Data</label>
-                    <input type="text" class="form-control col-sm-2" id="datepicker" placeholder="dd-mm-yyyy" name="date" data-date-format="dd-mm-yyyy" required value={{$appointment->start_at->toDateString()}}>
+                    <input type="text" class="form-control col-sm-2" id="datepicker" placeholder="dd-mm-yyyy" name="date" data-date-format="dd-mm-yyyy" required value={{$appointment->start_at->format('d-m-Y')}}>
                 </div>
 
 
                 <div class="col-sm-4">
                     <label for="first_name" class="control-label">Inicio</label>
                     <select class="form-control" name="start_at">
-                        <option selected>{{$appointment->start_at->hour}}:{{$appointment->start_at->minute}}</option>
+                        <option selected>{{$appointment->start_at->format('h:i')}}</option>
                         <option>08:00</option>
                         <option>08:30</option>
                         <option>09:00</option>
@@ -74,7 +74,7 @@ $subtitle = "Editar Agendamento";
                 <div class="col-sm-4">
                     <label for="first_name" class="control-label">Fim</label>
                     <select class="form-control" name="end_at">
-                    <option selected>{{$appointment->end_at->hour}}:{{$appointment->end_at->minute}}</option>
+                    <option selected>{{$appointment->end_at->format('h:i')}}</option>
                         <option>08:30</option>
                         <option>09:00</option>
                         <option>09:30</option>
