@@ -143,7 +143,7 @@ class ProfessionalsController extends Controller
 
         //Fixing Date Format - From dd-mm-yyyy to yyyy-mm-dd
         $dateArr = explode("-", request('birth'));
-        $birth = Carbon::create($dateArr[0], $dateArr[1], $dateArr[2]);
+        $birth = Carbon::create($dateArr[2], $dateArr[1], $dateArr[0]);
 
 
         $professional->first_name = request('first_name');

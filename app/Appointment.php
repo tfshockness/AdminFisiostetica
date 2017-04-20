@@ -8,17 +8,18 @@ class Appointment extends Model
 {
 	protected $dates=['start_at', 'end_at'];
 
-	public function getColor($color){
-		if($color === "Agendado"){
+
+	public function getColor(){
+		if($this->status === "Agendado"){
               return "#f39c12";
             }
-            if($color === "Confirmado"){
+            if($this->status === "Confirmado"){
               return "#00a65a";
             }
-            if($color === "Atendendo"){
+            if($this->status === "Atendendo"){
               return "#3c8dbc";
             }
-            if($color === "Cancelado"){
+            if($this->status === "Cancelado"){
               return "#f56954";
             }
 

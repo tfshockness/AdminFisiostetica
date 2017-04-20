@@ -104,7 +104,7 @@ class FinancesController extends Controller
         ]);
         //Fixing the Date - From dd-mm-yyyy to yyyy-mm-dd
         $dateArr = explode("-", request('add_at'));
-        $add_at= Carbon::create($dateArr[0], $dateArr[1], $dateArr[2]);
+        $add_at= Carbon::create($dateArr[2], $dateArr[1], $dateArr[0]);
 
         $f = Finance::find($id);
         $f->name = request('name');
