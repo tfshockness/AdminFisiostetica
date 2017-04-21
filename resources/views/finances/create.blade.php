@@ -19,21 +19,21 @@ $subtitle = "Novo";
                     <div class="form-group">
                         <label for="datepicker" class="col-sm-2 control-label">Data:</label>
                         <div class="col-sm-5">
-                          <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" name="add_at" data-date-format="dd-mm-yyyy" required>
+                          <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" name="add_at" data-date-format="dd-mm-yyyy" value="{{ old('add_at') }}" required>
                         </div>
                     </div>
 
                     <div class="form-group" style="padding-top:20px;">
                         <label for="first_name" class="col-sm-2 control-label">Descrição:</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" placeholder="Ex: Limpeza de Pele, Pagamento de Luz"  name="name" required>
+                            <input type="text" class="form-control" placeholder="Ex: Limpeza de Pele, Pagamento de Luz"  name="name" value="{{ old('name') }}" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                       <label for="cpf" class="col-sm-2 control-label">Valor:</label>
                       <div class="col-sm-5">
-                        <input type="number" step="0.05" class="form-control"  placeholder="100.00"  name="value" required>
+                        <input type="number" step="0.05" class="form-control"  placeholder="100.00"  name="value" value="{{ old('value') }}" required>
                       </div>
                     </div>
 

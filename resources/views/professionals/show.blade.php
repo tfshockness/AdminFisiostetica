@@ -127,6 +127,11 @@ $subtitle = "Profissional";
                     <label for="cpf" class="col-sm-2 control-label">CPF</label>
                     <div class="col-sm-10">
                       <input type="number" class="form-control" id="cpf" placeholder="CPF Somente numeros" value="{{$professional->CPF}}" name="CPF" required>
+                      @if($errors->has('CPF'))
+                        <span class="help-block">
+                          <p class="text-red">CPF inválido ou em uso.</p>
+                        </span>
+                      @endif
                     </div>
                   </div>
 

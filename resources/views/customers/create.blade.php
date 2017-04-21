@@ -25,14 +25,14 @@ $subtitle = "Cliente";
                 <div class="form-group">
                     <label for="first_name" class="col-sm-2 control-label">Nome</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="first_name" placeholder="Nome" name="first_name" required>
+                      <input type="text" class="form-control" id="first_name" placeholder="Nome" name="first_name" value="{{ old('first_name') }}" required>
                     </div>
                   </div>
                 
                   <div class="form-group">
                     <label for="last_name" class="col-sm-2 control-label">Sobrenome</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="last_name" placeholder="Sobrenome" name="last_name" required>
+                      <input type="text" class="form-control" id="last_name" placeholder="Sobrenome" name="last_name" value="{{ old('last_name') }}" required>
                     </div>
                   </div>
 
@@ -54,35 +54,40 @@ $subtitle = "Cliente";
                   <div class="form-group">
                     <label for="cpf" class="col-sm-2 control-label">CPF</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="cpf" placeholder="CPF Somente numeros"  name="CPF" required>
+                      <input type="number" class="form-control" id="cpf" placeholder="CPF Somente numeros" value="{{ old('CPF') }}"  name="CPF" required>
+                      @if($errors->has('CPF'))
+                        <span class="help-block">
+                          <p class="text-red">CPF inválido ou em uso.</p>
+                        </span>
+                      @endif
                     </div>
                   </div>
 
                 <div class="form-group">
                     <label for="datepicker" class="col-sm-2 control-label">Nascimento</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" name="birth" data-date-format="dd-mm-yyyy" required>
+                      <input type="text" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" name="birth" data-date-format="dd-mm-yyyy" value="{{ old('birth') }}" required>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="telephone" class="col-sm-2 control-label">Telefone</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="telephone" placeholder="Telefone" name="telephone">
+                      <input type="number" class="form-control" id="telephone" placeholder="Telefone" name="telephone" value="{{ old('telephone') }}">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="cellphone" class="col-sm-2 control-label">Celular</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="cellphone" placeholder="Celular" name="cellphone" required>
+                      <input type="number" class="form-control" id="cellphone" placeholder="Celular" name="cellphone" value="{{ old('cellphone') }}" required>
                     </div>
                   </div>
                   
                   <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">E-mail</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
+                      <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="{{ old('email') }}" required>
                     </div>
                   </div>
                 

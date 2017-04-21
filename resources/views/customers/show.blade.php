@@ -77,7 +77,7 @@ $subtitle = "Cliente";
                                 <div class="box-body">
                                 <!-- the events -->
                                 <div>
-                                  <a href="#">
+                                  <a href="/agenda/create">
                                     <button class="btn bg-olive" style="width:100%;"><i class="fa fa-plus"></i></button>
                                   </a>
                                 </div>
@@ -164,6 +164,11 @@ $subtitle = "Cliente";
                     <label for="cpf" class="col-sm-2 control-label">CPF</label>
                     <div class="col-sm-10">
                       <input type="number" class="form-control" id="cpf" placeholder="CPF Somente numeros" name="CPF" value="{{$customer->CPF}}" required>
+                      @if($errors->has('CPF'))
+                      <span class="help-block">
+                        <p class="text-red">CPF inválido ou em uso.</p>
+                      </span>
+                    @endif
                     </div>
                   </div>
 

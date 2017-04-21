@@ -58,6 +58,7 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
@@ -128,7 +129,7 @@ class CustomersController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'gender' => 'required',
-                'CPF' => 'required|max:11|min:11',
+                'CPF' => 'required|between:1,11',
                 'birth' => 'required',
                 'cellphone' => 'required',
                 'email' => 'required',
