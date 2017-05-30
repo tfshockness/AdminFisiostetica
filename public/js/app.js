@@ -1038,9 +1038,13 @@ var app = new Vue({
                         search: self.search
                     }
                 }).then(function (response) {
-                    self.results = response.data;
-                    console.log(response.data);
-                    self.showsearch = true;
+                    if (response.data.length === 0) {
+                        self.results = [{ first_name: "Nenum cliente foi", last_name: "encontrado." }];
+                        self.showsearch = true;
+                    } else {
+                        self.results = response.data;
+                        self.showsearch = true;
+                    }
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -1049,7 +1053,6 @@ var app = new Vue({
             }
         },
         setCustomerId: function setCustomerId(id, first_name, last_name) {
-            console.log("at least I am here");
             this.customer_id = id;
             this.search = first_name + ' ' + last_name;
             this.showsearch = false;

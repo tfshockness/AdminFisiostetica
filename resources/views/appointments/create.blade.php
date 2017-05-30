@@ -36,7 +36,7 @@ $subtitle = "Novo Agendamento";
                     </select> --}}
 
                     {{-- ORIGINAL AKI --}}
-                    <input type="text" class="form-control" id="first_name" placeholder="Nome" name="search" required v-model="search" @keydown="searchCust">
+                    <input type="text" class="form-control" id="first_name" placeholder="Digite nome ou sobrenome" name="search" required v-model="search" @keydown="searchCust">
                     <input type="hidden" name="customer_id" :value="customer_id">
                     <span class="input-group-addon">
                         <i class="fa fa-search"></i>
