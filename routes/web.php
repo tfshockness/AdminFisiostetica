@@ -12,7 +12,7 @@
 */
 //Customized routes
 Route::get('/agenda/datas', 'AppointmentsController@ajaxdate');
-
+Route::get('/clientes/search', 'AjaxController@customer');
 
 //REST
 Route::resource('/profissionais', 'ProfessionalsController');
