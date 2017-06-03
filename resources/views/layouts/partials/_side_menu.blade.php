@@ -33,17 +33,17 @@
       <ul class="sidebar-menu">
 
         <li class="header">Opções Principais</li>
-        <li><a href="{{url('/')}}"><i class="fa fa-circle-o text-purple"></i> <span>Pagina Inicial</span></a></li>
+        <li><a href="{{url('/')}}"><i class="fa fa-home"></i> <span>Pagina Inicial</span></a></li>
         <li>
           <a href="{{url('agenda/')}}">
-            <i class="fa fa-pie-chart"></i>
+            <i class="fa fa-calendar-check-o"></i>
             <span>Agendamento</span>
           </a>
         </li>
 
         <li>
           <a href="{{url('clientes/')}}">
-            <i class="fa fa-laptop"></i>
+            <i class="fa fa-users"></i>
             <span>Clientes</span>
           </a>
         </li>
@@ -56,28 +56,28 @@
 
         <li>
           <a href="{{url('profissionais/')}}">
-            <i class="fa fa-table"></i> <span>Profissionais</span>
+            <i class="fa fa-user-md"></i> <span>Profissionais</span>
           </a>
         </li>
         
         <li>
           <a href="{{url('financeiro/')}}">
-            <i class="fa fa-table"></i> <span>Financeiro</span>
+            <i class="fa fa-money"></i> <span>Financeiro</span>
           </a>
         </li>
         
         @if(Auth::user()->type == 777)
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-table"></i> <span>Relatorios</span>
+            <i class="fa fa-line-chart"></i> <span>Relatorios</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
 
           <ul class="treeview-menu">
-            <li><a href="{{url('profissionais/')}}"><i class="fa fa-circle-o"></i> lista</a></li>
-            <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> lista</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Data tables</a></li>
           </ul>
 
         </li>
@@ -93,65 +93,21 @@
           </a>
 
           <ul class="treeview-menu">
-            <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-            <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Profile</a></li>
-            <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-            <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-            <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-            <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-            <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-            <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-            <li><a href="pages/examples/pace.html"><i class="fa fa-circle-o"></i> Pace Page</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Invoice</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Profile</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Login</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Register</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> 404 Error</a></li>
           </ul>
 
         </li>
 
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-
-                </li>
-
-              </ul>
-
-            </li>
-
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-
-          </ul>
-
-        </li>
-        <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        <li class="header">LEGENDAS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Cancelado</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Agendado</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Confirmado</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Em Atendimento</span></a></li>
 
 
       </ul>
