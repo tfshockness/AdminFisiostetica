@@ -15,18 +15,21 @@
       </div>
 
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+      {{-- <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
-          <input type="text" name="sidebar_search" class="form-control" placeholder="Buscar por...">
+          <input type="text" name="search" class="form-control" placeholder="Buscar por..." v-model="search" @keyup="searchCust">
               <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat" @click.prevent="searchCust"><i class="fa fa-search"></i>
                 </button>
               </span>
         </div>
-      </form>
+        <div style="position:absolute; background-color: white; overflow: auto; width:90%; height: auto; z-index: 1; margin-top:1%;">
+            <app-search :results="results" v-if="search"></app-search>
+        </div>
+      </form> --}}
       <!-- /.search form -->
-
       <!-- sidebar menu: : style can be found in sidebar.less -->
+      
       <ul class="sidebar-menu">
 
         <li class="header">Opções Principais</li>

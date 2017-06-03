@@ -29,19 +29,23 @@ $subtitle = "Novo Agendamento";
                 </div>
                 <div class="input-group col-sm-10 form-group">
                     {{-- APENAS TESTE  --}}
-                    <select class="form-control" name="customer">
+                    {{-- <select class="form-control" name="customer">
                     @foreach ($customers as $customer)
                         <option value="{{$customer->id}}">{{$customer->first_name}} {{$customer->last_name}}</option>
                     @endforeach
-                    </select>
+                    </select> --}}
 
                     {{-- ORIGINAL AKI --}}
-                    {{-- <input type="text" class="form-control" id="first_name" placeholder="Nome" name="first_name" required>
+                    <input type="text" class="form-control" id="first_name" placeholder="Digite nome ou sobrenome" name="search" required v-model="search" @keydown="searchCust">
+                    <input type="hidden" name="customer_id" :value="customer_id">
                     <span class="input-group-addon">
                         <i class="fa fa-search"></i>
-                    </span> --}}
+                    </span>
+                    
                 </div>
-                
+                <div class="col-sm-10 form-group" style="margin-left:14%; margin-top: -1.2%; z-index:2; position:absolute;">
+                    <app-search :results="results" v-if="showsearch" @setid="setCustomerId"></app-search>
+                </div>
 
                 <div class="col-sm-4">
                     <label for="first_name" class="control-label">Data</label>

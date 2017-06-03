@@ -28,16 +28,6 @@ class AppointmentsController extends Controller
         $appointments = Appointment::all();
         return view('appointments.index', compact('appointments'));
     }
-
-    public function ajaxdate(){
-        $data = Appointment::find(1);
-        $app->professional = $data->professional->first_name . ' ' . $data->professional->last_name;
-        $app->customer = $data->customer->first_name . ' ' . $data->customer->last_name;
-        $app->date = $data->start_at->toDateString();
-        $app->start_at = $data->start_at->hour . ':' . $data->start_at->minute;
-
-        return $data;
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -62,8 +52,7 @@ class AppointmentsController extends Controller
 
         $ap = new Appointment();
         $ap->professional_id = $request->professional;
-        $ap->customer_id = $request->customer;
-        
+        $ap->customer_id = $request->customer_id;
         //Fixing and creating date - MOVE TO A FUNCTIONS  PLEASEEE!!!!!
         $date_array = explode("-", request('date'));
         $start_hr = explode(":", request('start_at'));
@@ -74,6 +63,16 @@ class AppointmentsController extends Controller
         
         $ap->start_at = $start_at;
         $ap->end_at = $end_at;
+
+        //Need to check if Professional and the customer has appointments for this day.
+        //Create method in appointment 
+        // $app::where()
+        // if(){//result returns nothings -> Show a error else save and redirect
+
+        // }else{
+
+        // }
+
         $ap->status = $request->status;
 
         $ap->save();
