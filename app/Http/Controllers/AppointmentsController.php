@@ -53,7 +53,6 @@ class AppointmentsController extends Controller
         $ap = new Appointment();
         $ap->professional_id = $request->professional;
         $ap->customer_id = $request->customer_id;
-        
         //Fixing and creating date - MOVE TO A FUNCTIONS  PLEASEEE!!!!!
         $date_array = explode("-", request('date'));
         $start_hr = explode(":", request('start_at'));
@@ -64,6 +63,16 @@ class AppointmentsController extends Controller
         
         $ap->start_at = $start_at;
         $ap->end_at = $end_at;
+
+        //Need to check if Professional and the customer has appointments for this day.
+        //Create method in appointment 
+        // $app::where()
+        // if(){//result returns nothings -> Show a error else save and redirect
+
+        // }else{
+
+        // }
+
         $ap->status = $request->status;
 
         $ap->save();
