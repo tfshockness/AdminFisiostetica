@@ -19,10 +19,10 @@ $subtitle = "Page";
 
             <div class="info-box-content">
               <span class="info-box-text">Novo Cliente</span>
-              <span class="info-box-number">41,410</span>
+              <span class="info-box-number">{{ DB::table('customers')->count() }}</span>
 
                   <span class="progress-description">
-                    70% Increase in 30 Days
+                    Clientes cadastrados
                   </span>
             </div>
             <!-- /.info-box-content -->
@@ -36,10 +36,10 @@ $subtitle = "Page";
 
             <div class="info-box-content">
               <span class="info-box-text">Novo Agendamento</span>
-              <span class="info-box-number">41,410</span>
+              <span class="info-box-number">{{ DB::table('appointments')->count()}}</span>
 
                   <span class="progress-description">
-                    70% Increase in 30 Days
+                    Agendamentos cadastrados
                   </span>
             </div>
             <!-- /.info-box-content -->
@@ -54,9 +54,9 @@ $subtitle = "Page";
 
             <div class="info-box-content">
               <span class="info-box-text">Efetuar Pagamento</span>
-              <span class="info-box-number">41,410</span>
+              <span class="info-box-number">{{DB::table('finances')->count()}}</span>
                   <span class="progress-description">
-                    70% Increase in 30 Days
+                    Lançamentos realizados
                   </span>
             </div>
             <!-- /.info-box-content -->

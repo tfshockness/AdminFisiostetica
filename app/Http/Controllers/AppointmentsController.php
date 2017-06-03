@@ -23,9 +23,24 @@ class AppointmentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $appointments = Appointment::all();
+        //Returning all value if Serach is empty
+        if(count($request->all()) > 0)
+        {
+            if($request->input('search') === '')
+            {
+                $appointments = Appointment::paginate(10);
+                return view('appointments.index', compact('appointments'));
+            }
+        };
+        
+        //If there is search, fetch in the Db
+        // $search = $request->input('search');
+        // $appointments = Appointment::where('first_name', 'like', "$search%")
+        // ->orWhere('last_name', 'like', "%$search%")->paginate(10);
+        
+        $appointments = Appointment::orderBy('start_at', 'desc')->paginate(10);
         return view('appointments.index', compact('appointments'));
     }
     /**

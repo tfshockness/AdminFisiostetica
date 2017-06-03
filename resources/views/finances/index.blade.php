@@ -95,6 +95,9 @@ $subtitle = "Resumo";
                 </tbody>
             </table>
         </div>
+        <div class="box-footer pagination" align="center" style="width:100%">
+            {{ $finances->links() }}
+        </div>
     </div>
 </div>
 

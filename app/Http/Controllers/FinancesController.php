@@ -21,7 +21,7 @@ class FinancesController extends Controller
      */
     public function index()
     {
-        $finances = Finance::all();
+        $finances = Finance::orderBy('add_at', 'desc')->paginate(10);
         return view('finances.index', compact('finances'));
     }
 

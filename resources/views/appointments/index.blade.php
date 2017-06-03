@@ -93,6 +93,9 @@ $subtitle = "Lista de agendamento";
                 </tbody>
             </table>
         </div>
+        <div class="box-footer pagination" align="center" style="width:100%">
+            {{ $appointments->links() }}
+        </div>
     </div>
 </div>
 
