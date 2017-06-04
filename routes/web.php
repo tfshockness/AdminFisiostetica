@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Route for the website
+
+Route::get('/', 'HomeController@index');
 //Customized routes
 Route::get('/agenda/datas', 'AppointmentsController@ajaxdate');
 Route::get('/clientes/search', 'AjaxController@customer');
@@ -24,10 +28,8 @@ Route::resource('/financeiro', 'FinancesController');
 //Rules
 Route::get('/admin', 'AdminController@index');
 
-Route::get('/', function () {
-    return redirect ('/admin');
-});
+// Route::get('/', function () {
+//     return redirect ('/admin');
+// });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');
