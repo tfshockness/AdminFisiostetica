@@ -33,7 +33,7 @@
       <ul class="sidebar-menu">
 
         <li class="header">Opções Principais</li>
-        <li><a href="{{url('/')}}"><i class="fa fa-home"></i> <span>Pagina Inicial</span></a></li>
+        <li><a href="{{url('/admin')}}"><i class="fa fa-home"></i> <span>Pagina Inicial</span></a></li>
         <li>
           <a href="{{url('agenda/')}}">
             <i class="fa fa-calendar-check-o"></i>

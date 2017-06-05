@@ -31,6 +31,8 @@ class RegisterController extends Controller
 
     /**
      * Create a new controller instance.
+     *To register do the following:
+     *Go to Views/Auth/register.blade.php and change the auth user for guest to allow registration
      *
      * @return void
      */
