@@ -16,16 +16,20 @@ $subtitle = "Editar Agendamento";
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" class="form-horizontal" action="/agenda" method="POST">
-              {{ csrf_field() }}
+            <form role="form" class="form-horizontal" action="{{action('AppointmentsController@update', ['id' => $appointment->id])}}" method="POST">
+                {{ method_field('PUT') }}
+                {{ csrf_field() }}
+
               <div class="box-body">
-                
                 <div class="form-group" style="width: 95%; margin: 0 auto;">
                   @include('layouts.error')
                 </div>
                 
                 <div class="col-sm-2 form-group">
                     <label for="first_name" class="control-label col-sm-2">Cliente</label>
+
+                    <input type="hidden" name="customer_id" value="{{$appointment->customer->id}}">
+
                 </div>
                 <div>
                     <h3>{{$appointment->customer->first_name}} {{$appointment->customer->last_name}}</h3>
@@ -33,13 +37,13 @@ $subtitle = "Editar Agendamento";
                 
 
                 <div class="col-sm-4">
-                    <label for="first_name" class="control-label">Data</label>
+                    <label for="datepicker" class="control-label">Data</label>
                     <input type="text" class="form-control col-sm-2" id="datepicker" placeholder="dd-mm-yyyy" name="date" data-date-format="dd-mm-yyyy" required value={{$appointment->start_at->format('d-m-Y')}}>
                 </div>
 
 
                 <div class="col-sm-4">
-                    <label for="first_name" class="control-label">Inicio</label>
+                    <label class="control-label">Inicio</label>
                     <select class="form-control" name="start_at">
                         <option selected>{{$appointment->start_at->format('h:i')}}</option>
                         <option>08:00</option>
@@ -72,7 +76,7 @@ $subtitle = "Editar Agendamento";
 
 
                 <div class="col-sm-4">
-                    <label for="first_name" class="control-label">Fim</label>
+                    <label class="control-label">Fim</label>
                     <select class="form-control" name="end_at">
                     <option selected>{{$appointment->end_at->format('h:i')}}</option>
                         <option>08:30</option>
@@ -104,7 +108,7 @@ $subtitle = "Editar Agendamento";
                 </div>
 
                 <div class="col-sm-8">
-                    <label for="first_name" class="control-label">Procedimento</label>
+                    <label for="procedure" class="control-label">Procedimento</label>
                     <select class="form-control" name="procedure">
                     @foreach ($procedures as $procedure)
                         <option value="{{$procedure->id}}">{{$procedure->name}}</option>
@@ -113,7 +117,7 @@ $subtitle = "Editar Agendamento";
                 </div>
 
                <div class="col-sm-4">
-                    <label for="first_name" class="control-label" >Status</label>
+                    <label for="status" class="control-label" >Status</label>
                     <select class="form-control" name="status">
                         <option>Agendado</option>
                         <option>Confirmado</option>
@@ -123,7 +127,7 @@ $subtitle = "Editar Agendamento";
                 </div>
 
                <div class="col-sm-12">
-                    <label for="first_name" class="control-label">Profissional</label>
+                    <label for="professional" class="control-label">Profissional</label>
                     <select class="form-control" name="professional">
                     @foreach ($professionals as $professional)
                         <option value="{{$professional->id}}">{{$professional->first_name}} {{$professional->last_name}}</option>

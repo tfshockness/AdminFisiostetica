@@ -133,7 +133,28 @@ class AppointmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ap = Appointment::find($id);
+
+        $ap->professional_id = $request->professional;
+        $ap->customer_id = $request->customer_id;
+        //Fixing and creating date - MOVE TO A FUNCTIONS  PLEASEEE!!!!!
+        $date_array = explode("-", request('date'));
+        $start_hr = explode(":", request('start_at'));
+        $start_at = Carbon::create($date_array[2], $date_array[1], $date_array[0], $start_hr[0], $start_hr[1]);
+
+        $end_hr = explode(":", request('end_at'));
+        $end_at = Carbon::create($date_array[2], $date_array[1], $date_array[0], $end_hr[0], $end_hr[1]);
+        
+        $ap->start_at = $start_at;
+        $ap->end_at = $end_at;
+        $ap->status = $request->status;
+
+        $ap->save();
+
+        $ap->procedures()->detach();
+        $ap->procedures()->save(Procedure::find($request->procedure));
+
+        return redirect()->action('AppointmentsController@index');
     }
 
     /**
