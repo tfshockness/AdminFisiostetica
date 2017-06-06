@@ -8,6 +8,7 @@ $subtitle = "Novo Agendamento";
 
 @section('content')
 
+@include('layouts.flash')
 <div class="col-md-10 create-box" >
           <!-- general form elements -->
           <div class="box box-primary">
