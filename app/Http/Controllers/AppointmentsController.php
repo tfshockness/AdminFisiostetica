@@ -8,6 +8,7 @@ use App\Procedure;
 use App\Professional;
 use App\Customer;
 use Carbon\Carbon;
+use Session;
 
 
 class AppointmentsController extends Controller
@@ -64,37 +65,43 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->customer_id == 0 || $request->customer_id === ""){
+            Session::flash('message', 'Cliente não encontrato. Favor tente novamente!'); 
+            Session::flash('alert-class', 'alert-danger');
+            return redirect()->action('AppointmentsController@create');
+        }else{
+            $ap = new Appointment();
+            $ap->professional_id = $request->professional;
+            $ap->customer_id = $request->customer_id;
+            //Fixing and creating date - MOVE TO A FUNCTIONS  PLEASEEE!!!!!
+            $date_array = explode("-", request('date'));
+            $start_hr = explode(":", request('start_at'));
+            $start_at = Carbon::create($date_array[2], $date_array[1], $date_array[0], $start_hr[0], $start_hr[1]);
 
-        $ap = new Appointment();
-        $ap->professional_id = $request->professional;
-        $ap->customer_id = $request->customer_id;
-        //Fixing and creating date - MOVE TO A FUNCTIONS  PLEASEEE!!!!!
-        $date_array = explode("-", request('date'));
-        $start_hr = explode(":", request('start_at'));
-        $start_at = Carbon::create($date_array[2], $date_array[1], $date_array[0], $start_hr[0], $start_hr[1]);
+            $end_hr = explode(":", request('end_at'));
+            $end_at = Carbon::create($date_array[2], $date_array[1], $date_array[0], $end_hr[0], $end_hr[1]);
+            
+            $ap->start_at = $start_at;
+            $ap->end_at = $end_at;
 
-        $end_hr = explode(":", request('end_at'));
-        $end_at = Carbon::create($date_array[2], $date_array[1], $date_array[0], $end_hr[0], $end_hr[1]);
+            //Need to check if Professional and the customer has appointments for this day.
+            //Create method in appointment 
+            // $app::where()
+            // if(){//result returns nothings -> Show a error else save and redirect
+
+            // }else{
+
+            // }
+
+            $ap->status = $request->status;
+
+            $ap->save();
+
+            $ap->procedures()->save(Procedure::find($request->procedure));
+
+            return redirect()->action('AppointmentsController@index');
+        }
         
-        $ap->start_at = $start_at;
-        $ap->end_at = $end_at;
-
-        //Need to check if Professional and the customer has appointments for this day.
-        //Create method in appointment 
-        // $app::where()
-        // if(){//result returns nothings -> Show a error else save and redirect
-
-        // }else{
-
-        // }
-
-        $ap->status = $request->status;
-
-        $ap->save();
-
-        $ap->procedures()->save(Procedure::find($request->procedure));
-
-        return redirect()->action('AppointmentsController@index');
     }
 
     /**
@@ -155,7 +162,6 @@ class AppointmentsController extends Controller
         $ap->procedures()->save(Procedure::find($request->procedure));
 
         return redirect()->action('AppointmentsController@index');
-
     }
 
     /**
