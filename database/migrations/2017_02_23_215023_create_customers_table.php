@@ -18,12 +18,12 @@ class CreateCustomersTable extends Migration
 			$table->increments('id');
 			$table->string('first_name');
 			$table->string('last_name');
-			$table->boolean('gender');
+			$table->boolean('gender')->nuable();
 			$table->string('CPF', 11)->unique();
-			$table->date('birth');
+			$table->date('birth')->nuable();
 			$table->bigInteger('telephone')->nullable();
 			$table->bigInteger('cellphone');
-			$table->string('email');
+			$table->string('email')->nuable();
 			$table->timestamps();
 		}
 		);

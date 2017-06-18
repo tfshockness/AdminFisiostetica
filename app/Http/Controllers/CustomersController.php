@@ -63,13 +63,14 @@ class CustomersController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'gender' => 'required',
-            'CPF' => 'required|unique:customers|numeric|min:11',
+            'CPF' => 'nullable|unique:customers|numeric|min:11',
             'birth' => 'required',
-            'cellphone' => 'required|numeric',
+            'cellphone' => 'numeric',
             'telephone' => 'nullable|numeric',
-            'email' => 'required|email'
+            'email' => 'nullable|email'
 
         ]);
+
 
         //Fixing the Date - From dd-mm-yyyy to yyyy-mm-dd
         $dateArr = explode("-", request('birth'));
@@ -86,7 +87,7 @@ class CustomersController extends Controller
             'email' => request('email')
         ]);
 
-         $id = Customer::where('CPF', request('CPF'))->value('id');
+         $id = Customer::where('first_name', request('first_name'))->where('last_name', request('last_name'))->value('id');
 
         return redirect()->action(
             'CustomersController@show', ['id' => $id]
@@ -129,10 +130,11 @@ class CustomersController extends Controller
                 'first_name' => 'required',
                 'last_name' => 'required',
                 'gender' => 'required',
-                'CPF' => 'required|between:1,11',
+                'CPF' => 'between:1,11',
                 'birth' => 'required',
-                'cellphone' => 'required',
-                'email' => 'required',
+                'cellphone' => 'numeric',
+                'telephone' => 'numeric',
+                'email' => 'email'
 
             ]);
 

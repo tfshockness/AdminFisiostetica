@@ -54,7 +54,7 @@ $subtitle = "Cliente";
                   <div class="form-group">
                     <label for="cpf" class="col-sm-2 control-label">CPF</label>
                     <div class="col-sm-10">
-                      <input type="number" class="form-control" id="cpf" placeholder="CPF Somente numeros" value="{{ old('CPF') }}"  name="CPF" required>
+                      <input type="number" class="form-control" id="cpf" placeholder="CPF Somente numeros" value="{{ old('CPF') }}"  name="CPF">
                       @if($errors->has('CPF'))
                         <span class="help-block">
                           <p class="text-red">CPF inválido ou em uso.</p>
@@ -87,7 +87,7 @@ $subtitle = "Cliente";
                   <div class="form-group">
                     <label for="email" class="col-sm-2 control-label">E-mail</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="{{ old('email') }}" required>
+                      <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="{{ old('email') }}" >
                     </div>
                   </div>
                 
