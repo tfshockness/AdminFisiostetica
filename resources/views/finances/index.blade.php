@@ -38,7 +38,7 @@ $subtitle = "Resumo";
                           </div>
 
                           <app-index-search></app-index-search>
-                          
+
                         </div>
                     </div> {{-- end box-header --}}
                 </fieldset>

@@ -15,7 +15,7 @@ $subtitle = "Index";
                 <a class="btn btn-app bg-olive" href="{{url('profissionais/create')}}"><i class="fa fa-plus "></i>Novo</a>
             </div>
             <form class="inline-form col-md-10" action="/profissionais" method="GET">
-                <fildset class="form-group">
+                <fieldset class="form-group">
                     <div class="box-header">
                     <div class="col-md-1">
                     <label for="search">Buscar: </label>
@@ -27,7 +27,7 @@ $subtitle = "Index";
                             <input type="submit" class="btn bg-blue form-control" name="" value="buscar" >
                         </div>
                     </div>
-                </fildset>
+                </fieldset>
             </form>
         </div>
 
