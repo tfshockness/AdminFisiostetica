@@ -12,7 +12,7 @@ $subtitle = "Resumo";
 
         <div class="row search-box center">
             <form class="inline-form">
-                <fildset class="form-group">
+                <fieldset class="form-group">
                     <div class="box-header" style="padding-bottom: 0px;">
 
                         <div class="col-xs-4 right">
@@ -37,27 +37,11 @@ $subtitle = "Resumo";
                             <a class="btn btn-app bg-olive" href="{{url('financeiro/create')}}"><i class="fa fa-plus "></i>Novo</a>
                           </div>
 
-
-                         <!-- Date range -->
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="text" class="form-control" id="daterangepicker">
-                                </div>
-                                <!-- /.input group -->
-                            </div>
-                        <!-- /.form group -->
-                            <div class="form-group col-md-4">
-                                <input type="text" class="form-control" id="search" name="professional_name" placeholder="Buscar por Nome" required>
-                            </div>
-                            <div class="col-md-2">
-                                <input type="submit" class="btn bg-blue form-control" name="" value="buscar" >
-                            </div>
+                          <app-index-search></app-index-search>
+                          
                         </div>
                     </div> {{-- end box-header --}}
-                </fildset>
+                </fieldset>
             </form>
         </div>
 

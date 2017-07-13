@@ -21,12 +21,13 @@ class AppointmentsController extends Controller
 
     /**
      * Display a listing of the resource.
+     * @param $request - get the request variables
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        //Returning all value if Serach is empty
+        //Returning all value if Search is empty
         if(count($request->all()) > 0)
         {
             if($request->input('search') === '')

@@ -13,13 +13,13 @@
       @else
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="{{ URL::asset('img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+            {{--<img src="{{ URL::asset('img/user2-160x160.jpg') }}" class="user-image" alt="User Image">--}}
             <span class="hidden-xs">{{Auth::user()->email}}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
-            <li class="user-header">
-              <img src="{{ URL::asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+            <li class="user-header" style="height: auto">
+              {{--<img src="{{ URL::asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">--}}
               <p>
                 {{Auth::user()->name}}
                 <small>{{Auth::user()->email}}</small>
