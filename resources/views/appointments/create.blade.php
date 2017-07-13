@@ -78,8 +78,12 @@ $subtitle = "Novo Agendamento";
                         <option>17:00</option>
                         <option>17:30</option>
                         <option>18:00</option>
+                        <option>18:30</option>
+                        <option>19:00</option>
                         <option>19:30</option>
                         <option>20:00</option>
+                        <option>20:30</option>
+                        <option>21:00</option>
                         <option>21:30</option>
                         <option>22:00</option>
                     </select>
@@ -89,6 +93,7 @@ $subtitle = "Novo Agendamento";
                 <div class="col-sm-4">
                     <label for="first_name" class="control-label">Fim</label>
                     <select class="form-control" name="end_at">
+                        <option>08:00</option>
                         <option>08:30</option>
                         <option>09:00</option>
                         <option>09:30</option>
@@ -109,11 +114,14 @@ $subtitle = "Novo Agendamento";
                         <option>17:00</option>
                         <option>17:30</option>
                         <option>18:00</option>
+                        <option>18:30</option>
+                        <option>19:00</option>
                         <option>19:30</option>
                         <option>20:00</option>
+                        <option>20:30</option>
+                        <option>21:00</option>
                         <option>21:30</option>
                         <option>22:00</option>
-                        <option>22:30</option>
                     </select>
                 </div>
 
