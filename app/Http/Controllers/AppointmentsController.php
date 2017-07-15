@@ -27,20 +27,39 @@ class AppointmentsController extends Controller
      */
     public function index(Request $request)
     {
+
         //Returning all value if Search is empty
         if(count($request->all()) > 0)
         {
-            if($request->input('search') === '')
+            if(isset($request->name))
+            {
+                //If there is search, fetch in the Db
+                 $search = $request->input('name');
+
+                $appointments = Appointment::whereHas('customer', function($query) use($search){
+                       $query->where('first_name', 'like', "$search%")->orWhere('last_name', 'like', "%$search%");
+                 })->paginate(10);
+
+
+                return view('appointments.index', compact('appointments'));
+
+
+            }
+            if(isset($request->date)){
+
+                $appointments = Appointment::where('start_at', 'like', "%$request->date%")->paginate(10);
+                return view('appointments.index', compact('appointments'));
+            }
+
+            if($request->input('name') === '' || $request->input('date') === '')
             {
                 $appointments = Appointment::paginate(10);
+
                 return view('appointments.index', compact('appointments'));
             }
         };
-        
-        //If there is search, fetch in the Db
-        // $search = $request->input('search');
-        // $appointments = Appointment::where('first_name', 'like', "$search%")
-        // ->orWhere('last_name', 'like', "%$search%")->paginate(10);
+
+
         
         $appointments = Appointment::orderBy('start_at', 'desc')->paginate(10);
         return view('appointments.index', compact('appointments'));

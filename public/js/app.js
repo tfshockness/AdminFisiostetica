@@ -2307,6 +2307,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             searchOption: 'nome'
         };
+    },
+    methods: {
+        getDateInput: function getDateInput() {
+            getDate();
+        }
     }
 });
 
@@ -2411,7 +2416,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(9)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 38 */
@@ -2729,6 +2734,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-control",
     on: {
+      "blur": _vm.getDateInput,
       "change": function($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
           return o.selected
@@ -2757,9 +2763,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "type": "text",
       "id": "search",
-      "name": "professional_name",
-      "placeholder": "Buscar por Nome",
-      "required": ""
+      "name": "name",
+      "placeholder": "Buscar por Nome"
     }
   })]) : _vm._e(), _vm._v(" "), _vm._m(1)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2773,7 +2778,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "id": "daterangepicker"
+      "name": "date",
+      "id": "datepick"
     }
   })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2783,7 +2789,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "btn bg-blue form-control",
     attrs: {
       "type": "submit",
-      "name": "",
+      "name": "btn",
       "value": "buscar"
     }
   })])

@@ -11,7 +11,7 @@ $subtitle = "Lista de agendamento";
 <div class="col-md-12">
     <div class="box">
         <div class="row search-box center">
-            <form class="inline-form">
+            <form class="inline-form" action="/agenda" method="GET">
                 <fieldset class="form-group" id="form">
                     <div class="box-header">
                         <div class="col-md-2">
@@ -81,5 +81,17 @@ $subtitle = "Lista de agendamento";
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('script')
+    <script>
+        function getDate() {
+            $('#datepick').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+
+        };
+    </script>
 
 @endsection

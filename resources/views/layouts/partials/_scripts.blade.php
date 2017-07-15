@@ -9,8 +9,9 @@
         <script src="{{ URL::asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
         <script src="{{ URL::asset('plugins/chartjs/Chart.min.js') }}"></script>
         <script src="{{ URL::asset('plugins/datepicker/bootstrap-datepicker.js')}}"></script>
-        <script src="{{ URL::asset('js/app.js') }}"></script> 
-        {{-- <script src="https://unpkg.com/vue@2.2.1/dist/vue.js"></script> --}}
+        <script src="{{ URL::asset('plugins/daterangepicker/moment.js')}}"></script>
+        <script src="{{ URL::asset('plugins/daterangepicker/daterangepicker.js')}}"></script>
+        <script src="{{ URL::asset('js/app.js') }}"></script>
 
         @yield('script')
 

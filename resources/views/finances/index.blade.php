@@ -86,3 +86,14 @@ $subtitle = "Resumo";
 </div>
 
 @endsection
+@section('script')
+    <script>
+        function getDate() {
+            $('#datepick').datepicker({
+                format: 'yyyy-mm-dd'
+            });
+
+        };
+    </script>
+
+@endsection
