@@ -19,8 +19,39 @@ class FinancesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+
+        //Returning all value if Search is empty
+        if(count($request->all()) > 0)
+        {
+            if(isset($request->name))
+            {
+                
+                $finances = Finance::where('name', 'like', "%$request->name%")->paginate(10);
+
+
+                return view('finances.index', compact('finances'));
+
+
+            }
+            if(isset($request->date)){
+
+                $finances = Finance::where('add_at', 'like', "%$request->date%")->paginate(10);
+                return view('finances.index', compact('finances'));
+            }
+
+            if($request->input('name') === '' || $request->input('date') === '')
+            {
+                $finances = Finance::paginate(10);
+
+                return view('finances.index', compact('finances'));
+            }
+        };
+
+
+
         $finances = Finance::orderBy('add_at', 'desc')->paginate(10);
         return view('finances.index', compact('finances'));
     }
