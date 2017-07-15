@@ -17,6 +17,7 @@ class FinancesController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param $request - get the request variables
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
@@ -28,7 +29,7 @@ class FinancesController extends Controller
         {
             if(isset($request->name))
             {
-                
+
                 $finances = Finance::where('name', 'like', "%$request->name%")->paginate(10);
 
 

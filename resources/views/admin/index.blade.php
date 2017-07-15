@@ -47,7 +47,6 @@ $subtitle = "Page";
           <!-- /.info-box -->
         </div>
 
-
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="info-box bg-aqua">
             <a href="{{url('financeiro/create')}}" class="link-home"><span class="info-box-icon"><i class="fa fa-shopping-cart"></i></span></a>
@@ -65,11 +64,25 @@ $subtitle = "Page";
         </div>
         <!-- ./col -->
 
-
-
       </div>
       <!-- /.row -->
 <!-- Small boxes (END box) -->
+<div class="col-md-11" style="margin-left:5%; width: 90%">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Agenda do Profissional</h3>
+        </div>
+        <div class="box-body">
+            @foreach (DB::table('professionals')->get() as $professional)
+                <a class="btn btn-app" href="{{url('profissionais/')}}/{{$professional->id}}">
+                    <i class="fa fa-user-md"></i>
+                    {{$professional->first_name}}&nbsp;{{$professional->last_name}}
+                </a>
+            @endforeach
+        </div>
+    </div>
+</div>
+
 
 <!-- Calendar (start calendar) -->
     <div class="row home-btn">
