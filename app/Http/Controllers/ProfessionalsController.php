@@ -22,15 +22,16 @@ class ProfessionalsController extends Controller
      */
     public function index(Request $request)
     {
-        //Returning all value if Serach is empty
+        //Returning all value if Serach is not empty
         if(count($request->all()) > 0)
         {
+            //if search was pressed without a value
             if($request->input('search') === '')
             {
                 $professionals = Professional::paginate(10);
                 return view('professinals.index', compact('professionals'));
             }
-        };
+        }
         
         //If there is search, fetch in the Db
         $search = $request->input('search');

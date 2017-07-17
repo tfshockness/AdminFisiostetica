@@ -14,6 +14,10 @@ use Session;
 class AppointmentsController extends Controller
 {
 
+    /**
+     * AppointmentsController constructor.
+     *
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -28,9 +32,10 @@ class AppointmentsController extends Controller
     public function index(Request $request)
     {
 
-        //Returning all value if Search is empty
+        //Returning all value if Search is not empty
         if(count($request->all()) > 0)
         {
+            //if search is by name
             if(isset($request->name))
             {
                 //If there is search, fetch in the Db
@@ -45,12 +50,14 @@ class AppointmentsController extends Controller
 
 
             }
+            //if search is by date
             if(isset($request->date)){
 
                 $appointments = Appointment::where('start_at', 'like', "%$request->date%")->paginate(10);
                 return view('appointments.index', compact('appointments'));
             }
 
+            //if search is empty
             if($request->input('name') === '' || $request->input('date') === '')
             {
                 $appointments = Appointment::paginate(10);
@@ -85,15 +92,21 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
+        //handle error if no customer is found or user type something else in the search
         if($request->customer_id == 0 || $request->customer_id === ""){
+
             Session::flash('message', 'Cliente não encontrato. Favor tente novamente!'); 
             Session::flash('alert-class', 'alert-danger');
+
             return redirect()->action('AppointmentsController@create');
+
         }else{
             $ap = new Appointment();
+
             $ap->professional_id = $request->professional;
             $ap->customer_id = $request->customer_id;
-            //Fixing and creating date - MOVE TO A FUNCTIONS  PLEASEEE!!!!!
+
+            //Fixing and creating date
             $date_array = explode("-", request('date'));
             $start_hr = explode(":", request('start_at'));
             $start_at = Carbon::create($date_array[2], $date_array[1], $date_array[0], $start_hr[0], $start_hr[1]);
@@ -103,16 +116,6 @@ class AppointmentsController extends Controller
             
             $ap->start_at = $start_at;
             $ap->end_at = $end_at;
-
-            //Need to check if Professional and the customer has appointments for this day.
-            //Create method in appointment 
-            // $app::where()
-            // if(){//result returns nothings -> Show a error else save and redirect
-
-            // }else{
-
-            // }
-
             $ap->status = $request->status;
 
             $ap->save();
@@ -164,7 +167,8 @@ class AppointmentsController extends Controller
 
         $ap->professional_id = $request->professional;
         $ap->customer_id = $request->customer_id;
-        //Fixing and creating date - MOVE TO A FUNCTIONS  PLEASEEE!!!!!
+
+        //Fixing and creating date
         $date_array = explode("-", request('date'));
         $start_hr = explode(":", request('start_at'));
         $start_at = Carbon::create($date_array[2], $date_array[1], $date_array[0], $start_hr[0], $start_hr[1]);
@@ -185,7 +189,7 @@ class AppointmentsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage. NOT USING DESTROY
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

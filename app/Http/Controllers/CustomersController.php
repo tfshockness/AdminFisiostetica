@@ -16,17 +16,20 @@ class CustomersController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * @request - gets the variables sent by GET request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        //Returning all value if Serach is empty
+        //Returning all value if Serach is not empty
         if(count($request->all()) > 0){
+
+            //if the search was pressed without a value
             if($request->input('search') === ''){
                 $clientes = Customer::paginate(10);
                 return view('customers.index', compact('clientes'));
-            };
+            }
+
             //If there is search, fetch in the Db
             $search = $request->input('search');
             $clientes = Customer::where('first_name', 'like', "$search%")
@@ -73,6 +76,7 @@ class CustomersController extends Controller
 
 
         //Fixing the Date - From dd-mm-yyyy to yyyy-mm-dd
+
         $dateArr = explode("-", request('birth'));
         $birth = Carbon::create($dateArr[2], $dateArr[1], $dateArr[0]);
 
