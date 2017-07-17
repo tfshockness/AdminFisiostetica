@@ -49,6 +49,8 @@ $subtitle = "Lista de agendamento";
                     }
                     if($appointment->status === "Cancelado"){
                         $status = "btn-danger";
+                    }if($appointment->status === "Faltou"){
+                        $status = "bg-navy";
                     }
                     ?>
                     <tr>

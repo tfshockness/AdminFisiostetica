@@ -22,6 +22,9 @@ class Appointment extends Model
             if($this->status === "Cancelado"){
               return "#f56954";
             }
+            if($this->status === "Faltou"){
+                return "#111111";
+            }
 
 	}
 	public function professional(){

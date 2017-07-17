@@ -104,6 +104,7 @@
         </li>
 
         <li class="header">LEGENDAS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-black"></i> <span>Faltou</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Cancelado</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Agendado</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-green"></i> <span>Confirmado</span></a></li>

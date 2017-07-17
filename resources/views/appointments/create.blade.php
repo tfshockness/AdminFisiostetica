@@ -141,6 +141,7 @@ $subtitle = "Novo Agendamento";
                         <option>Confirmado</option>
                         <option>Atendendo</option>
                         <option>Cancelado</option>
+                        <option>Faltou</option>
                     </select>
                 </div>
 
