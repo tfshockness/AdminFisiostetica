@@ -1,5 +1,5 @@
 {{-- CHANGE THIS FOR guest To make registration --}}
-@if(Auth::user())
+@if(Auth::guest())
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>

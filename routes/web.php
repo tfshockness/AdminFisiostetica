@@ -13,7 +13,7 @@
 
 //Route for the website
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'AdminController@index');
 //Customized routes
 Route::get('/agenda/datas', 'AppointmentsController@ajaxdate');
 Route::get('/clientes/search', 'AjaxController@customer');

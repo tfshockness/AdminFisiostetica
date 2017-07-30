@@ -35,7 +35,9 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sistema administrativo Fiostetica</p>
+    <p class="login-box-msg">Sistema administrativo Fisiostetica</p>
+      <p>Login: admin@admin.com</p>
+      <p>Password: admin123</p>
 
     <form role="form" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
